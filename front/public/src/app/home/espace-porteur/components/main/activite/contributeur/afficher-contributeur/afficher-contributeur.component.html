@@ -1,0 +1,89 @@
+<!-- partial -->
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3">
+
+            <!-- DEBUT LISTE -->
+                <div class="card">
+
+                    <div class="card-header">
+
+
+                        <div class="row justify-content-md-center bg">
+                        
+                            <div class="mt-3 ml-3">
+                                <h2 class="liste"> Liste des contributeurs</h2>
+                            </div>
+                        </div>
+                        </div>
+						<div class="card-body">
+                        <div class="col-md-8 haut">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Projets</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" [(ngModel)]="idProjet">
+                                        <option value="{{item.id}}" *ngFor="let item of listProjetUser">{{item.titre}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-3">
+                                    <button type="button" (click)="seacrch()" class="btn btn-primary"> Rechercher
+                                    </button>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-md">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Projets</th>
+                                        <th>Noms et prénoms</th>
+                                        <th>Télephones</th>
+                                        <th>Emails</th>
+                                        <th>Montant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                        <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listContributeurByProjet.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucun contributeur trouvé</td>
+                            </tr>
+                                     
+                                    <tr *ngFor="let item of returnedItems; let i = index">
+                                        <td>{{i+1}}}</td>
+                                        <td>{{item.projet.titre}}</td>
+                                        <td>{{item.profil.nom}}&nbsp;{{item.profil.prenom}}</td>
+                                        <td>{{item.profil.telephone}}</td>
+                                        <td>{{item.profil.email}}</td>
+                                        <td>{{item.montant | formatMoney}} FCFA</td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listContributeurByProjet.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- FIN LISTE --> 
+
+
+
+</div>
+        </div>
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo" ></app-footer-three>

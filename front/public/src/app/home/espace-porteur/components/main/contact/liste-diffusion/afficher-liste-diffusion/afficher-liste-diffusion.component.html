@@ -1,0 +1,76 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3">
+
+            <!-- DEBUT MESSAGE A WASINDO -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row justify-content-md-center bg">
+                
+                        <div class="mt-3 ml-3">
+                            <h2 class="liste"> Liste de diffusion</h2>
+                        </div>
+                    </div>
+               </div>
+
+                    <hr>
+                    <div class="d-flex justify-content-end">
+                        <a (click)="createDiffusion()" class="btn btn-primary mdi mdi-pencil-box-outline" role="button">  Créer une liste de diffusion</a>
+                    </div>
+								   <div class="card-body">
+                    <h4 class="card-title">Contact</h4>
+                    <form class="forms-sample text-center">
+                        <table class="table table-striped mt-2 mb-5 table-bordered table-md">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom de la liste de diffusion</th>
+                                    <th>Nombre de contacts</th>
+                                    <!-- <th></th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listDiffusionByProfil.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucune liste de diffusion trouvée</td>
+                            </tr>
+
+                                <tr *ngFor="let item of listDiffusionByProfil; let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item.nom}}</td>
+                                    <td>{{item.nombre_contact}}</td>
+                                    <!-- <td><a href="" class="btn btn-danger mdi mdi-border-color " role="button"> Editer</a></td> -->
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- FIN MESSAGE WASINDO -->
+
+
+
+        </div>
+
+        <!-- partial -->
+    </div>
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo" ></app-footer-three>

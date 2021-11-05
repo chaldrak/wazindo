@@ -1,0 +1,31 @@
+<div class="img-wrapper">
+    <div class="front">
+        <!-- <a [routerLink]="['/home/accueil/', product.code]"> -->
+            <img [defaultImage]="'assets/images/product/placeholder.jpg'"
+                [lazyLoad]="'assets/img/publique/categories/' + product.icone_categorie + ''" class="img-fluid  img-cat"
+                alt="{{ product.nom_categorie }}">
+
+        <!-- </a> -->
+    </div>
+    <div class="cart-info cart-wrap">
+
+
+        <button class="btn_display_details" title="Afficher les projets de la catégorie {{ product.nom_categorie }}"
+            (click)="showDetails(product)">
+            Afficher les projets de cette catégorie
+        </button>
+
+
+    </div>
+
+</div>
+
+<div class="product-info">
+
+    <!-- <a [routerLink]="['/annonces/autos/detail/', product.code]"> -->
+        <h3>{{ product.nom_categorie }}</h3>
+    <!-- </a> -->
+    <div class="count_projets"> {{ product.total_projets}} projet<span *ngIf="product.total_projets>1">s</span> </div>
+
+
+</div>

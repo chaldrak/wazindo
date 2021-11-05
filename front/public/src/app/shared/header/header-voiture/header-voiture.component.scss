@@ -1,0 +1,35 @@
+.mar{
+    // display: inline-block;
+}
+
+.liste_entete li { display: inline-block; }
+
+.title_site{  }
+.annonce_area{   }
+.marquee_line{ }
+
+
+.marquee {
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 0;
+    height: 16px;
+    display: block;
+}
+.marquee span {
+    display: inline-block;
+    text-indent: 0;
+    overflow: hidden;
+    -webkit-transition: 15s;
+    transition: 15s;
+    -webkit-animation: marquee 15s linear infinite;
+    animation: marquee 15s linear infinite;
+    color: white;
+}
+
+@keyframes marquee {
+    0% { transform: translate(100%, 0); -webkit-transform: translateX(100%); }
+    100% { transform: translate(-100%, 0); -webkit-transform: translateX(-100%); }
+}

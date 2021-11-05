@@ -1,0 +1,177 @@
+<!--footer section -->
+<footer [ngClass]="class">
+    <div class="dark-layout" *ngIf="mainFooter">
+        <div class="container">
+            <section class="section-b-space border-b">
+                <div class="row footer-theme2">
+                    <div class="col-lg-3">
+                        <div class="footer-title footer-mobile-title">
+                            <h4>wazindo</h4>
+                        </div>
+                        <div class="footer-contant d-table text-center">
+                            
+                                <img [src]="themeLogo" class="footer-logo" alt="logo">
+                            
+
+                            <div class="d-flex justify-content-around  mt-4">
+                                <span (mouseover)="changeColorf=true" (mouseout)="changeColorf=false">
+                                    <a *ngIf="!changeColorf" href="#"><i
+                                            class="fa fa-facebook-f text-white"></i></a>
+                                    <a *ngIf="changeColorf" href="#"><i
+                                            class="fa fa-facebook-f text-primary"></i></a>
+                                </span>
+                                <span (mouseover)="changeColort=true" (mouseout)="changeColort=false">
+                                    <a *ngIf="!changeColort" href="#"><i
+                                            class="fa fa-twitter  text-white"></i></a>
+                                    <a *ngIf="changeColort" href="#"><i
+                                            class="fa fa-twitter  text-info"></i></a>
+                                </span>
+
+                                <span (mouseover)="changeColory=true" (mouseout)="changeColory=false" >
+                                    <a *ngIf="!changeColory" href="#"><i
+                                            class="fa fa-youtube   text-white "></i></a>
+                                    <a *ngIf="changeColory" href="#"><i
+                                            class="fa fa-youtube color_youtube "></i></a>
+                                </span>
+
+                                <span (mouseover)="changeColorG=true" (mouseout)="changeColorG=false" >
+                                    <a *ngIf="!changeColorG" href="#"><i
+                                            class="fa fa-google-plus-square  text-white  goog"></i></a>
+                                    <a *ngIf="changeColorG" href="#"><i
+                                            class="fa fa-google-plus-square text-danger"></i></a>
+                                </span>
+                               
+                                <a href="#"><i
+                                        class="fa fa-linkedin-in   text-white "></i></a>
+                            </div>
+
+                            <!-- <p> <a class="link-dark active" href="#">Foires aux questions | Mentions légales</a> </p> -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="">
+                            <p class="footer-title">Liens Utiles</p>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="#" class="text-dark">Qui sommes-nous</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-dark">Foires aux questions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-dark">Comment nous aidons</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-dark">Valeurs fondamentales</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="text-dark">Devenir bénévole</a>
+                                    </li><br>
+                                    <li>
+                                        <a href="#" class="text-dark">Notre équipe</a>
+                                    </li><br>
+                                    <li>
+                                        <a href="#" class="text-dark">Mentions légales</a>
+                                    </li><br>
+                                    <li>
+                                        <a href="#" class="text-dark">Galerie</a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                         
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 subscribe-wrapper">
+                        <div >
+                            <p class="footer-title">Notre magazine</p>
+                            <div >
+                            <p class="text-dark" >Abonnez-vous pour recevoir regulierement nos 
+                                derniere modifications</p>
+                            </div>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="exampleFormControlInput3"
+                                     placeholder = "Your Email " class="inpt"><br><br>
+                                    <button type="submit"  class="btn btn-inscrir"> S'inscrire&nbsp;<i class="fa fa-envelope" aria-hidden="true"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <p class="footer-title">Contactez-nous</p>
+                        <div class="footer-contant">
+                            <ul class="contact-details">
+                                <li  class="text-red fa fa-phone" aria-hidden="true" > +(229) 62 52 11 11</li>
+                                <li> <a href="javascript:void(0)" class="text-red  fa fa-map-marker "aria-hidden="true" ></a> <span class="text-light">Rue 887 Lot 1212 Parcelle Z  Face  Centre de Santé Sainte Cécile, Cotonou,Benin</span></li>
+                               
+                                <li > <a href="javascript:void(0)" class="text-red  fa fa-envelope-o" aria-hidden="true" > contact@wazindo.com </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="dark-layout" *ngIf="subFooter">
+        <div class="container">
+            <section class="small-section">
+                <div class="row footer-theme2">
+                    <div class="col p-set">
+                        <div class="footer-link">
+                            <div class="sub-title">
+                                <div class="footer-title">
+                                    <h4>Categories</h4>
+                                </div>
+                                <div class="footer-contant">
+                                    <ul>
+                                        <li><a href="javascript:void(0)">Womens Fashion</a></li>
+                                        <li><a href="javascript:void(0)">Mens Fashion</a></li>
+                                        <li><a href="javascript:void(0)">Kids Fashion</a></li>
+                                        <li><a href="javascript:void(0)">Featured</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-link-b">
+                            <div class="sub-title">
+                                <div class="footer-title">
+                                    <h4>why we choose</h4>
+                                </div>
+                                <div class="footer-contant">
+                                    <ul>
+                                        <li><a href="javascript:void(0)">shipping & return</a></li>
+                                        <li><a href="javascript:void(0)">secure shopping</a></li>
+                                        <li><a href="javascript:void(0)">gallary</a></li>
+                                        <li><a href="javascript:void(0)">affiliates</a></li>
+                                        <li><a href="javascript:void(0)">contacts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="sub-footer darker-subfooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-sm-12">
+                    <div class="footer-end">
+                        <p><i class="fa fa-copyright" aria-hidden="true"></i> Osons Lutter pour l’Avenir (OLA) – 2021 | Tous droits réservés</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-12">
+                    <div class="payment-card-bottom">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer section end -->

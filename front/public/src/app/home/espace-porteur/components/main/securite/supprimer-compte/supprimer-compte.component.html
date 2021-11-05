@@ -1,0 +1,59 @@
+<!-- partial -->
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3 ">
+
+            <!-- DEBUT MESSAGE A WASINDO -->
+            <div class="card mb-3">
+                <div class="card-header ">
+
+                    <div class="row justify-content-md-center bg">
+
+                        <div class="mt-3 ml-3">
+                            <h2 class="liste">Formulaire de demande de suppression de compte</h2>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="centrer">
+                        <div class="mb-3">
+                            <h5 class="text-center">Je souhaite supprimer mon compte sur la plateforme Wazindo. <br> En
+                                voici les raisons ci-dessous</h5>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="exampleFormControlTextarea1" class="col-sm-3 col-form-label">Motif:</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" name="motif" [(ngModel)]='motif'
+                                    rows="3"></textarea>
+                            </div>
+                        </div>
+                        <hr>
+            
+                        <div class="d-flex justify-content-center">
+                            <button type="" class="btn btn-light mr-2 mdi mdi-close-circle-outline"> Annuler
+                            </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button type="" class="btn btn-primary mdi mdi-content-save"
+                                (click)="deleteProfil()">Enregistrer </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- FIN MESSAGE WASINDO -->
+
+
+
+        </div>
+    </div>
+</div>
+
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-three>

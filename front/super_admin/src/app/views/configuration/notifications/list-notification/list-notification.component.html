@@ -1,0 +1,65 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Notifications()
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Type Notification</th>
+                                <th>Description</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						
+						 <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listProjetUser.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucune notification trouvée</td>
+                            </tr>
+						
+                            <tr *ngFor="let item of listProjetUser">
+                                <td>{{item.id}}</td>
+                                <td>{{item.titre}}</td>
+                                <td>{{item.description}}</td>
+                                <td>
+                                    <img src="{{item.photo_mini}}" alt="image" style="max-width: 5%;" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary mr-1" (click)="goToedit(item)">
+                                        <i class="fa fa-edit"></i>
+                                      </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <nav>
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">4</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

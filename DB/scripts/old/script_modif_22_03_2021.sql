@@ -1,0 +1,1 @@
+ALTER TABLE wazindo.categorie ADD icone varchar(100) NULL;

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../service"
+		},
+		{
+			"path": "super_admin"
+		},
+		{
+			"path": "public"
+		},
+		{
+			"path": "web"
+		}
+	],
+	"settings": {}
+}

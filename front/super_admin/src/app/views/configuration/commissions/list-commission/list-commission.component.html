@@ -1,0 +1,50 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Commissions({{listProjetUser.length}})
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Libellé</th>
+                                <th>Valeur</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						
+						 <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listProjetUser.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucune commission trouvée</td>
+                            </tr>
+						
+                            <tr *ngFor="let item of returnedItems">
+                                <td>{{item.code}}</td>
+                                <td>{{item.valeur}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary mr-1" (click)="goToedit(item)">
+                                        <i class="fa fa-edit"></i>
+                                      </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listProjetUser.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

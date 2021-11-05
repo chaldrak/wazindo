@@ -1,0 +1,126 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Contribution Projet'" [breadcrumb]="'Contribution Projet'"></app-breadcrumb>
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="bordurecontent mb-3">
+                <div class="container">
+                    <div class="entete">
+                        <div class="row pt-2 mb-2">
+                            <div class="col-lg-5 col-sm-12 text-center">
+                                <a [routerLink]="['/home/detail-projet/',projetData.reference]" class="btn btn-light bordurebouton">Retour</a>
+                            </div>
+                            <div class="col-lg-4 col-sm-12 text-center">
+                                <img [src]="themeLogo" alt="" class="image">
+                            </div>
+                            <div class="col-lg-3 col-sm-12 text-center">
+                                <select name="" id="">
+                                    <option value="Francais">Francais</option>
+                                </select>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bordurecontent pb-2">
+                <div class="container">
+                    <div class="entete">
+                        <div class="row pt-2 text-center">
+                            <!-- <div class="text-center"> -->
+                                <span class="title text-center col-sm-12 col-lg-4 offset-lg-4">{{projetData.titre}}</span>
+                                <!-- <div class="row "> -->
+                                    
+                                    <div class="col-sm-12 col-lg-4 offset-lg-4 text-center">
+                                        <img [src]='projetData.photo_mini' class="actualite" alt="Nouveau !" />
+                                    </div>
+                                    <div class="col-sm-12 col-lg-4 offset-lg-4 text-center">
+                                        <span>{{profilName}}</span>
+                                    </div>
+                                
+                                <!-- </div> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="bordurecontent pb-2">
+                <div class="container">
+                    <div class="entete">
+                        <div class="row pt-2">
+                            <div class="text-center">
+                                <h4 class="mt-3 mb-3">Votre Contribution</h4>
+
+                                <div class="table-responsive ">
+                                    <table class="table table-bordered table-striped table-md">
+                                        <thead class="thead">
+                                            <tr>
+                                                <th>Contrepartie</th>
+                                                <th>Montant</th>
+                                               
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of listContrepartieAdd">
+                                                <td>{{item.description}}</td>
+                                                <td>{{item.mt_max | formatMoney }} FCFA</td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>                            
+                                <div class="col-sm-12 col-lg-4 offset-lg-4 text-center">
+                                <button type="submit" *ngIf="isadd" (click)='goToPaiementContribution()' class="btn btn-solid "> Continuer&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                <button type="submit" *ngIf="!isadd" (click)='goToPaiementContribution()' class="btn btn-solid "> Continuer&nbsp;&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="col-sm-12 text-center">
+
+                                    <p class="text-center mt-3 mb-3">Ajout d'une contrepartie</p>
+                                    <h5 class="text-center">Wazindo n'est pas une boutique en ligne. Vous soutenez un projet pour permettre sa
+                                        réalisation.</h5>
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+            <section class="content">
+                <div class="container">
+                    <span class="soustitle ml-4">Choisissez vos contreparties</span>
+
+                    <div class="bord container mt-3" *ngFor="let item of listContrepartie">
+
+                        <div class="pull-left">
+                            <span>Pour {{item.mt_max | formatMoney}} FCFA</span>
+                        </div>
+                        <div class="pull-right mt-2">
+                            <button class="btn btn-success btn-lg" (click)='addContrepartie(item)' type="button">Ajouter&nbsp;<i class="fa fa-plus"></i></button>
+                        </div><br>
+
+                        <div>
+                            <img [src]="item.image" alt="Nouveau !"  class="imgdim"/>
+
+                        </div>
+                        <div>
+                            <h4>{{item.description}}</h4>
+                        </div>
+                       
+                        <div class="left">
+                            {{item.date_liv_est | date: "dd/MM/yyyy"}}
+                        </div>
+                      
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</section>
+
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

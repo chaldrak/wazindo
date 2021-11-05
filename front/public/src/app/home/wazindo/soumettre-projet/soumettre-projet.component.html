@@ -1,0 +1,190 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Soumettre Projet'" [breadcrumb]="'Soumettre Projet'"></app-breadcrumb>
+<section class="container ">
+    <div>
+        <p class="finance text-center">
+            Comment proposer un projet ?
+        </p>
+        <div class=" contact_img text-center">
+            <h4>
+                <!-- <em> FINANCER UN PROJET Contribuer d'au moins 5000 FCFA A un projet</em> -->
+                <em> Vous devez contribuer d'au moins 5000 FCFA à un projet publié sur la plateforme Wazindo</em>
+            </h4>
+            <div class="search-button text-center mt-4">
+                <a (click)='goToProposition()' class="btn btn-solid rounded ">Proposer un projet</a>
+            </div>
+        </div>
+        <p class="finance text-center">
+            Qui peut soumettre un projet ?
+        </p>
+        <div class="grid-container">
+            
+            <!-- <h3 class="text-center"><strong >Introduction</strong> <br></h3>
+            <span class="sm_projet"> Osons Lutter pour l’Avenir via son programme Wazindo est une organisation à
+                but non lucratif qui permet de donner facilement et en toute sécurité aux projets partout dans
+                le monde, tout en fournissant aux organisations locales les outils, la formation et le soutien
+                dont ils ont besoin pour devenir plus efficaces.</span><br><br>
+            <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet.png">
+            </div><br>
+            <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet2.png">
+            </div>
+            <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet3.png">
+            </div><br><br> -->
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center"> Individuels </strong> <br></h3>
+                <span class="sm_projet"> Nous rendons sûr, facile et amusant pour quiconque de donner à des
+                    organisations à but non lucratif approuvées. Vous voulez amasser des fonds pour votre projet
+                    innovant à impact communautaire ? Là aussi, nous avons ce qu'il vous faut. Les porteurs de
+                    projet peuvent être des particuliers ou équipes (étudiant, diplômé sans emploi, acteur culturel,
+                    cultuel, artistique, artisanal, agricole, éleveur, piscicole, tradithérapeute, fonctionnaire,
+                    retraité, entrepreneur, …)</span><br><br>
+                <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet4.png">
+                </div><br><br>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center">Organisations </strong> <br></h3>
+                <span class="sm_projet"> Toute organisation à but non lucratif, association ou ONG, réseau,
+                    fédération, coopérative, etc., n'importe où dans le monde, peut rejoindre Wazindo pour créer des
+                    pages de collecte de fonds et accéder à des outils, une formation, une assistance individuelle,
+                    de l'argent de contrepartie et des prix bonus ... elles peuvent aussi financer tout projet tant
+                    entrepreneurial que d’assistance sociale.</span><br><br>
+                <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet5.png">
+                </div><br><br>
+            </div>
+            
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center"> Entreprises </strong> <br></h3>
+                <span class="sm_projet"> Nous proposons des outils et des solutions spécialisées pour aider les
+                    entreprises à améliorer leur stratégie de dons d'entreprise, à responsabiliser leurs parties
+                    prenantes et à soutenir des projets à fort impact dans le monde entier. Elles peuvent être
+                    établissement individuel, sociétés à statuts divers (SARL, SA, GE, …), </span> <br><br>
+                <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet6.png">
+                </div><br><br>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center"> Fondations </strong> <br></h3>
+                <span class="sm_projet">Grâce à notre processus de vérification approfondi et à notre vaste réseau,
+                    nous permettons aux fondations de cibler des dons à des organisations à but non lucratif locales
+                    à travers le monde qui seraient trop petits pour les processus de subvention
+                    traditionnels.</span> <br><br>
+                <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet7.png">
+                </div><br><br>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center"> Collectivités locales </strong> <br></h3>
+                <span class="sm_projet">Nous donnons ici aux collectivités territoriales un espace de mise en ligne
+                    de plan de développement local et mobiliser les ressources financières provenant de leurs
+                    habitants et, au-delà de leur territoire, des personnes désireuses de contribuer au financement
+                    d’un projet local.</span> <br><br>
+                <div class="text-center"> <img src="../../../../../assets/img/soumettreprojet/img_projet8.png">
+                </div><br><br>
+            </div>
+
+            <div class="grid-item">
+                <h3 class="text-center"><strong class="text-center">Partenaires divers </strong> <br></h3>
+                <span class="sm_projet">Engagés dans notre valeur fondamentale d'écoute, d'action, d'apprentissage,
+                    de répétition, nous menons et partageons toujours des recherches avec nos pairs et nos
+                    partenaires afin d'augmenter l'efficacité des dons et des organisations à but non lucratif dans
+                    le monde entier.
+                </span> <br><br>
+                
+                <div class="d-flex justify-content-between">
+                    <div class=" contact_img col-12 col-md-4 col-lg-3 text-center">
+                        <img src="../../../../../assets/img/soumettreprojet/collectivites.png"
+                            class="figure-img  img-fluid rounded" alt="alt=">
+                        <figcaption class="figure-caption text-xs-right">
+                            <p class="">
+                                <!-- Collectivités locales -->
+                                Collectivité
+                            </p>
+                        </figcaption>
+                    </div>
+                    <div class=" contact_img col-12 col-md-4 col-lg-3 text-center">
+                        <figure class="figure">
+                            <img src="../../../../../assets/img/soumettreprojet/associations.png"
+                                class="figure-img  img-fluid rounded" alt="alt=">
+                            <figcaption class="figure-caption text-xs-right">
+                                <p class="">
+                                    Association
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class=" contact_img col-12 col-md-4 col-lg-3 text-center">
+                        <figure class="figure">
+                            <img src="../../../../../assets/img/soumettreprojet/entreprises.png"
+                                class="figure-img  img-fluid rounded" alt="alt=">
+                            <figcaption class="figure-caption text-xs-right">
+                                <p class="">
+                                    Jeune entreprise
+                                </p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="search-button text-center mb-4">
+            <a (click)='goToProposition()' class="btn btn-solid rounded">Proposer un projet</a>
+        </div>
+    </div>
+
+    <div>
+        <p class="finance text-center">
+            Comment financer un projet?
+        </p>
+        <div class=" row  justify-content-center">
+
+            <div class=" contact_img col-12 col-md-4 col-lg-3 text-center">
+
+                <figure class="figure">
+                    <img src="../../../../../assets/img/soumettreprojet/idees.png" class="figure-img  img-fluid rounded"
+                        alt="alt=">
+                    <figcaption class="figure-caption text-xs-right">
+                        <p class="">
+                            <!-- 1 . SOUMETTRE VOTRE IDEE -->
+                            Soumettre
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class=" contact_img col-12 col-md-4 col-lg-3 text-center">
+                <figure class="figure">
+                    <img src="../../../../../assets/img/soumettreprojet/projets.png"
+                        class="figure-img  img-fluid rounded" alt="alt=">
+                    <figcaption class="figure-caption text-xs-right">
+                        <p class="">
+                            <!-- 2 . PLANIFIER VOTRE PROJET -->
+                            Planifier
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+
+            <div class="contact_img col-12 col-md-4 col-lg-3 text-center">
+                <figure class="figure">
+                    <img src="../../../../../assets/img/soumettreprojet/campagnes.png"
+                        class="figure-img  img-fluid rounded" alt="alt=">
+                    <figcaption class="figure-caption text-xs-right">
+                        <p class="">
+                            <!-- 3 . LANCER LA CAMPAGNE -->
+                            Lancer
+                        </p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-button text-center">
+        <a (click)='goToProposition()' class="btn btn-solid rounded">Proposer un projet</a>
+    </div><br>
+</section>
+
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

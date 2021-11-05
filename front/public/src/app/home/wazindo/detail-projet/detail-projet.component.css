@@ -1,0 +1,80 @@
+
+.flotte {
+    float:left;
+}
+section{
+    padding-top: 2rem;
+}
+.icone{
+    padding-top:15rem;
+}
+
+.positiontitle{
+    padding-top:20px;
+}
+.image{
+        width: 100%;
+}
+span{
+    padding: 10px!important;
+}
+.portrait{
+    width: 100%;
+}
+
+.commentaire{
+padding-bottom: 4rem;
+    width: 100%;
+}
+
+.actualite{
+    width: 50%;
+}
+.bordure{
+    border: 3px solid #777777;
+}
+.bordure:hover {
+    color:#3d72f1;
+    text-decoration:none;
+    background-color:#3d72f1;
+    }
+    .left{
+        text-align: left;
+    }
+    .right{
+        text-align: right;
+    }
+    .bord{
+        border: 1px solid rgb(227, 221, 211);
+    margin: 3px;
+    }
+    .bord:hover{
+        border: 2px solid rgba(24, 165, 214, 0.5);
+    
+    }
+    .bord:active{
+        border: 2px solid rgba(24, 165, 214, 0.5);
+    
+    }
+    .imgdim{
+        max-width: 100%;
+    }
+
+.porteur_login{ font-size: 12px; }
+.amount_project{font-weight: bold;}
+
+@media only screen and (max-width: 600px) {
+  .responsive{
+      text-align: center!important;
+  }
+  }
+  .btn-couleur{
+      background-color: #ff0000;
+      color: white;
+  }
+  .btn-outline-light{
+      color: black;
+  }
+  .menuTab{
+      color: black!important;
+  }

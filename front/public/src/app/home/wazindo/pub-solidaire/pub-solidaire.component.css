@@ -1,0 +1,241 @@
+body {
+    font-family: Quicksand, sans-serif;
+    color: #777;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+}
+.propose
+ {
+	background-color: #0533FB;
+	margin:10px;
+	color:white;
+	font-weight: 500;
+	height:30%;
+	padding:20px;
+	font-size: 22px;
+	border: none;
+	} 
+.don {
+    background-color: #0533FB;
+    font-weight: 700;
+    text-align: center;
+    padding: 14px 40px;
+    font-size: 12px;
+    border-radius: 50px/50px !important;
+    min-width: 160px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s ease 0s;
+	
+}
+.soumettre-banniere {
+   
+    background-color: #0533FB;
+    background-size: cover;
+    text-align: center;
+    max-height: 320px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    overflow: hidden;
+}
+
+.soumettre-banniere_text {
+    font-family: storytella;
+    text-align: right;
+    position: absolute;
+    bottom: 0px;
+    right: 18px;
+  
+}
+.soumettre-banniere_pre-heading {
+    margin-top: 10%;
+}
+
+.soumettre-banniere_heading {
+    font-size: 25px;
+}
+
+.nav1 {
+    background-color: aliceblue;
+}
+
+.btn-couleur{
+    background-color: #ff0000;
+    color: white;
+}
+/*Font*/
+
+.section1 {
+    overflow: hidden;
+}
+
+.section1_img {
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    width: 100%;
+}
+
+.section11 {
+    padding-bottom: 2%;
+}
+
+.section111 {
+    padding: 10%;
+}
+
+.bene {
+    font-size: 250px;
+    font-family: 'storytella';
+}
+
+@media screen and (max-width:1024px) {
+    .bene {
+        font-size: 75px;
+        font-family: 'storytella';
+    }
+}
+
+.bene1 {
+    color: orange;
+    font-family: 'storytella';
+}
+
+.img--layout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none
+}
+
+.img-box {
+    position: relative
+}
+
+.img-box__img {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px
+}
+
+@media only screen and (min-width:992px) {
+    .img-box__img {
+        margin-bottom: 0
+    }
+}
+
+.img-box .img--layout {
+    display: none
+}
+
+@media only screen and (min-width:1200px) {
+    .img-box .img--layout {
+        display: inline-block
+    }
+}
+
+.img-box__img::before {
+    content: "";
+    display: block;
+    padding-top: 109.57447%
+}
+
+.user-form .form__field {
+    margin-bottom: 30px
+}
+
+.user-form .form__message {
+    height: 250px
+}
+
+@media only screen and (min-width:992px) {
+    .user-form .form__message {
+        height: 370px
+    }
+}
+
+.user-form .form__submit {
+    margin-top: 10px
+}
+
+.forms-section__bg {
+    display: inline-block;
+    width: 100%;
+    height: auto
+}
+
+.form__submit {
+    display: inline-block;
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 14px 40px;
+    border-radius: 50px;
+    letter-spacing: .050em;
+    text-decoration: none;
+    min-width: 160px;
+    background: #fff;
+    border: 2px solid #0062CC;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s
+}
+
+.form__submit:hover {
+    color: white;
+    cursor: pointer;
+    background-color: #0062CC;
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+    -webkit-box-shadow: 0 20px 38px rgba(0, 0, 0, .16);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, .16)
+}
+
+.form__field {
+    font-size: 14px;
+    font-weight: 700;
+    height: 50px;
+    width: 100%;
+    border-radius: 50px;
+    border: 2px solid #f9f7f6;
+    padding: 0 30px;
+    background: #f9f7f6;
+    -webkit-transition: background .3s;
+    -o-transition: background .3s;
+    transition: background .3s;
+    outline: 0
+}
+
+.form__field:focus {
+    background: #fff
+}
+
+.img--bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top center;
+    object-position: top center;
+    font-family: "object-fit: cover; object-position: top center";
+    z-index: -1
+}
+.finance{font-size:30px;font-weight: bold; margin: 20px!important;}
+
+
+
+/*Footer*/

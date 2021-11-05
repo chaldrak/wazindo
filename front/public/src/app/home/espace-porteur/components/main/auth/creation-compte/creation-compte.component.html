@@ -1,0 +1,97 @@
+<section>
+    <div class="app-body">
+        <main class="main d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 mx-auto">
+                        <div class="card-group">
+
+                            <div class="card d-md-down-none c1" style="width:55%">
+                                <!-- <img [src]="Logo" class="img-fluid" alt="logo"> -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-sm-12 text text-left">
+                                        <img [src]="themeLogo" [routerLink]="['/home/accueil']" class="img-fluid imgdim" alt="logo">
+                                        
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form action="" name="register_form">
+                                     
+                                        <h2 class="formtext">Bienvenu sur la plateforme <span
+                                                class="colortext">WAZINDO</span></h2>
+                                        <p class="text-center colorlibelle">Veuillez vous inscrire</p>
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="">Nom</label>
+                                                <input type="text" class="form-control size-text" name="nom" [(ngModel)]="profil.nom" placeholder="Ecrivez votre nom ">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Prénom</label>
+                                                <input type="text" class="form-control size-text" name="prenom" [(ngModel)]="profil.prenom" placeholder="Prénom">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Téléphone</label>
+                                                <input type="number" class="form-control size-text" name="phone" [(ngModel)]="profil.telephone" placeholder="Inscrivez ici votre numéro de téléphone  ">
+                                            </div>
+                                           
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label for="">Email</label>
+                                                <input type="email" class="form-control size-text" name="adresse_email" [(ngModel)]="profil.email" placeholder="Votre mail ici ">
+                                            </div>
+                                            <label for="">Mot de Passe</label>
+                                         
+                                            <div class="input-group mb-2">
+                                                <input type="{{getInputType()}}" [(ngModel)]="profil.password" maxlength="30" class="form-control size-text" placeholder="Mot de passe *" name="motdepasse">
+                                                <div class="input-group-append"  (click)="tooglePasswordView()">
+                                                         
+                                                    <div class="input-group-text">
+                                                        <span class="{{getIconValue()}}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Pays</label>
+                                            <select class="form-control country" name="country" [(ngModel)]="profil.pays_id" >
+                                                <option value="">Sélectionner un Pays</option>
+                                                <option value="{{item.id}}" *ngFor="let item of paysList">{{item.nom}}
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                            <div class="text-center mt-3">
+                                                <button type="submit" class="btn-lg colorLogo" (click)="goToAuth()"><i class="fa fa-user-plus dimlib"></i> &nbsp;<span class='dimlib'>Créer le compte</span></button>
+                                            </div>
+
+                                              <div class="text-center pt-2">
+                                            <p><small class="passforget">Déjà un compte ?</small>&nbsp;<a [routerLink]="['/porteur/auth']"
+                                                    class="passforget"><u class="colortexte"> Se connecter
+                                                    </u></a></p>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                            <p class="colorlibelle">2021 Wazindo</p>
+                                        </div>
+                                        
+                                        </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</section>
+
+
+
+
+
+

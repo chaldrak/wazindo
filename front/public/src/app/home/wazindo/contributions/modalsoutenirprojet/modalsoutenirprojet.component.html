@@ -1,0 +1,38 @@
+<div class="modal-header bg-color">
+  <h4 class="modal-title text-center">SOUTIENT DE PROJET</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="about-text">
+        <img [src]='soumissionLogo'
+        class="figure-img  img-fluid rounded" alt="alt=">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="about-text">
+        <p class="text-justify text-center">
+          Vous devez vous connecter avant de pouvoir soutenir le projet
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer footerclass">
+  <button type="button" class="left col-md-5 btn btn-default" (click)="bsModalRef.hide()" (click)='goToSoumission()'>Annuler <i
+    class="fa fa-close"></i></button>
+
+  <button type="button" class="right col-md-5 offset-right btn btn-light bg-color" (click)='goToConnect()' (click)="bsModalRef.hide()"  ><i class="fa fa-lock"></i>&nbsp;Se Connecter </button>
+
+
+
+</div>

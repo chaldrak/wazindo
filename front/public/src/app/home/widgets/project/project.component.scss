@@ -1,0 +1,81 @@
+.padd1{
+    
+    padding-left: 4em;
+}
+.padd2{
+    
+    padding-right: 4em;
+}
+img
+{
+    max-width: 55%;
+    width: 200px;
+	height: 250px;
+}
+.size{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+}
+.size-desc{
+    font-size: 1em;
+}
+
+.box {
+    border: 5px solid darkblue;
+    width: 55%;
+    height: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
+
+
+  .image{
+    border: 5px solid darkblue;
+    border-bottom: none;
+
+
+  }
+  .bord-body{
+    border: 5px solid darkblue;
+    border-top: none;
+    width: 55%;
+   
+
+  }
+  .btn{
+    border-radius: 10px 10px 10px 10px;
+    
+  }
+  .bout{
+    padding-left: 5em ;
+    padding-right: 5em;
+
+  }
+  .p-wazindo{
+      text-align: center;
+  }
+  .imge
+  {
+      max-width: 55%;
+      width: 200px;
+      height: 50px;
+      border-radius: 10px 10px 10px 10px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    
+   
+  }
+ .label_categorie
+ {
+     position: fixed; top: 0px; 
+padding-top: 0.5em;
+padding-right: 1em;
+padding-left: 1em;
+padding-bottom: 0.5em;
+color: white;
+background-color: blue;
+
+
+ }

@@ -1,0 +1,38 @@
+<div class="modal-header bg-color">
+  <h4 class="modal-title text-center">COMPTE CREE AVEC SUCCES</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="about-text">
+        <img [src]='soumissionLogo'
+        class="figure-img  img-fluid rounded" alt="alt=">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    
+    <div class="col-sm-12">
+      <div class="about-text">
+        <p class="text-justify text-center">
+          Votre compte a été créé avec succès. Veuillez consulter vos mails pour activer votre compte afin de vous connecter.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="modal-footer footerclass">
+  <button type="button" class="left col-md-5 btn btn-default" (click)="bsModalRef.hide()" (click)='goToAccueil()'>Accueil <i
+    class="fa fa-close"></i></button>
+
+  <button type="button" class="right col-md-5 offset-right btn btn-light bg-color" (click)='goToLogin()' (click)="bsModalRef.hide()"  ><i class="fa fa-lock"></i>&nbsp;Se connecter </button>
+
+
+
+</div>

@@ -1,0 +1,57 @@
+
+
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+              
+                <div class="card-body">
+                
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="titre">Titre</label>
+                                <input type="text" name="titre"  class="form-control" id="titre" [(ngModel)]="titre" placeholder="" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" name="description"  class="form-control" id="description" [(ngModel)]="description" placeholder="" />
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="montant_projet">Montant Projet</label>
+                                <input type="text" name="montant_projet"  class="form-control" id="montant_projet" [(ngModel)]="montant_projet" placeholder="" />
+                               
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lien_video">Lien Vidéo</label>
+                                <input type="text" name="lien_video"  class="form-control" id="lien_video" [(ngModel)]="lien_video" placeholder="https://" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn b1 mr-1" (click)="savePubSolidaireUpdated()">
+                            <i class=" fa fa-check"></i>
+                            <span>Enregistrer</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>
+
+
+<ngx-spinner></ngx-spinner>

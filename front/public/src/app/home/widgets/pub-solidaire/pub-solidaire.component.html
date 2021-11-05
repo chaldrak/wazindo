@@ -1,0 +1,100 @@
+<!-- <owl-carousel-o [options]="BlogSliderConfig" class="no-arrow">
+  <ng-container *ngFor="let project of projects">
+    <ng-template carouselSlide>
+      <div class="col-md-12">
+        <a [routerLink]="['/home/detail-projet/', project.reference]">
+          <div class="classic-effect">
+            <img
+              [defaultImage]="project.photo_mini ? project.photo_mini : 'assets/img/projets/image_project-default.png'"
+              [lazyLoad]="project.photo_mini ? project.photo_mini : 'assets/img/projets/image_project-default.png' "
+              class="img-fluid" alt="{{ project.nom }}">
+
+            <span></span>
+          </div>
+        </a>
+
+        <div class="card-body">
+          <hr class="style1">
+
+          <div class="row">
+
+            <div class="col-lg-6">
+
+              <h4>{{project.updated_at | date:'dd/MM/yyyy HH:mm' }}</h4>
+
+            </div>
+            <div class="col-lg-6 ">
+              <span class="pull-right" *ngIf="project.profil"> {{project.profil.nom + ' ' + project.profil.prenom }}
+              </span>
+            </div>
+          </div>
+          <strong>{{project.titre | limitTo:30}}</strong>
+          <p>{{project.resume | limitTo:50}}</p>
+          <div class="row">
+            <div class="col-lg-6">
+              <small>{{project.duree_campagne}} Jours </small>
+            </div>
+
+            <div class="col-lg-6">
+              <small class="pull-right">{{project.montant_a_collecte | formatMoney }} FCFA
+              </small>
+            </div>
+          </div>
+          <div class="progress mt-3">
+            <div class="progress-bar bg-primary rounded" role="progressbar" [style.width]="getPercentageProject(project)"
+              aria-valuemin="0" aria-valuemax="100">{{getPercentageOnProject(project)}}
+            </div>
+      
+          </div>
+         
+          <div class="d-flex justify-content-between">
+            <p class="card-text mt-5">
+              <a class="btn btn-outline-primary text-dark" role="button"
+                [routerLink]="['/home/detail-projet/', project.reference]">
+                Détails
+              </a>
+
+            </p>
+            <p class="card-text mt-5">
+              <a [routerLink]="['/home/contribution-projet',project.reference]" name="" id=""
+                class="btn btn-primary text-white" role="button"> Soutenir</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o> -->
+
+<div class="img-wrapper">
+  <div class="front">
+      <!-- <a [routerLink]="['/home/accueil/', product.code]"> -->
+          <img [defaultImage]="'assets/images/product/placeholder.jpg'"
+              [lazyLoad]="'assets/img/publique/categories/' + product.icone_categorie + ''" class="img-fluid"
+              alt="{{ product.nom_categorie }}">
+
+      <!-- </a> -->
+  </div>
+  <div class="cart-info cart-wrap">
+
+
+      <button class="btn_display_details" title="Afficher les projets de la catégorie {{ product.nom_categorie }}"
+          (click)="showDetails(product)">
+          Afficher les projets de cette catégorie
+      </button>
+
+
+  </div>
+
+</div>
+
+<div class="product-info">
+
+  <!-- <a [routerLink]="['/annonces/autos/detail/', product.code]"> -->
+      <h3>{{ product.nom_categorie }}</h3>
+  <!-- </a> -->
+  <div class="count_projets"> {{ product.total_projets}} projet<span *ngIf="product.total_projets>1">s</span> </div>
+
+
+</div>

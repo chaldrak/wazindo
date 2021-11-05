@@ -1,0 +1,58 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Financement Sponsor ({{ listFinancementSponsor.length }})
+                    <button type="button" class="pull-right btn btn-primary" (click)="financementSponsorCreate()"><i
+                        class=" fa fa-plus"></i> <span> Ajouter </span></button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Sponsor</th>
+                                <th>Publicité Solidaire</th>
+                                <th>Montant Apport</th>
+								<th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						 <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listFinancementSponsor.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucun Financement Sponsor trouvé</td>
+                            </tr>
+						
+                            <tr *ngFor="let item of returnedItems">
+                                <td>{{item.id}}</td>
+                                <td>{{item.sponsor.nom}}</td>
+                                <td>{{item.pub_solidaire.titre}}</td>
+                                <td>{{item.montant_apport}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary mr-1" (click)="goToedit(item)">
+                                        <i class="fa fa-edit"></i>
+                                      </button>
+                                    <button type="button" class="btn btn-danger mr-1" (click)="financementSponsorDelete(item)">
+                                        <i class="fa fa-trash"></i>
+                                      </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listFinancementSponsor.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

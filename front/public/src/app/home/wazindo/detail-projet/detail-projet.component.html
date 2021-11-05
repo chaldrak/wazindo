@@ -1,0 +1,642 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Details Projet'" [breadcrumb]="'Details Projets'"></app-breadcrumb>
+
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-sm-8">
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h2 class="text-center">{{projetData.titre}}</h2>
+                            <h5 class="text-center">
+                                {{projetData.mot_porteur}}
+                            </h5>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <span class="pr-2">
+                                        <button type="button" class="btn btn-dark bt_projet ">SUIVI <i
+                                                class="fa fa-heart text-primary"></i></button>
+                                    </span>
+                                    <span class="pr-2">
+                                        <button type="button" class="btn btn-dark bt_projet">PARTAGER <i
+                                                class="fa fa-share-alt"></i></button>
+                                    </span>
+                                    <span>
+                                        <button type="button" class="btn btn-dark bt_projet ">RECOMMANDER </button>
+                                    </span>
+                                </div>
+                            </div>
+                            <span> <a href="{{projetData.url_facebook}}"><img [src]='facebookLogo' />
+                                </a></span>
+
+                            <span> <a href="{{projetData.url_twitter}}"><img [src]='twitterLogo' />
+                                </a></span>
+
+                            <span> <a href="{{projetData.url_youtube}}"><img [src]='youtubeLogo' />
+                                </a></span>
+
+                            <span> <a href="{{projetData.url_linkedin}}"><img [src]='linkedinLogo' />
+                                </a></span>
+                            <span><a href="#"> <img [src]='loveLogo' /></a></span>
+                        </div>
+                        <div class="card-body">
+
+
+
+                            <ngb-tabset [destroyOnHide]="false">
+                                <!-- projet -->
+                                <ngb-tab>
+                                    <ng-template ngbTabTitle class="menuTab">
+                                        <h4 class="main"> <i class="fa fa-home"></i>Projet
+                                        </h4>
+                                    </ng-template>
+                                    <ng-template ngbTabContent>
+                                        <div class="card-body">
+
+                                            <p> <img [src]='projetData.photo_mini' alt="logo" class="image">
+                                            </p>
+                                            <h5 class="text-center">
+                                                {{projetData.mot_porteur}}
+                                            </h5>
+
+
+                                        </div>
+
+                                        <div class="row mt-3">
+
+                                            <div class="col-sm-6 text-justify responsive"> <strong>Pays :</strong>
+                                                {{paysName}}
+                                            </div>
+
+                                            <div class="col-sm-6 text-center"> <strong>Catégorie :</strong>
+                                                {{categorieName}}
+                                            </div>
+                                        </div>
+
+                                        <div class="row  mb-3">
+                                            <div class="col-sm-6 text-justify responsive"> <strong>Montant à Collecter
+                                                    :</strong>
+                                                {{projetData.montant_a_collecte | formatMoney }} FCFA</div>
+                                            <div class="col-sm-6 text-center "> <strong>Durée de la Collecte :
+                                                </strong>{{projetData.duree_campagne}} JOURS</div>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="card">
+                                                    <div class="card-header finance">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 text-center">
+                                                                Lignes à Financer
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="bord container mt-3"
+                                                        *ngFor="let item of listLigneFinance">
+                                                        <div>
+                                                            <div class="pull-left">
+                                                                <h4>Pour {{item.montant | formatMoney}} FCFA</h4>
+                                                            </div>
+                                                            <div class="pull-right" (click)='getListContrepartie()'>
+                                                                <span>Ajouter</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-5">
+                                                            <div class="col-md-4 text-center">
+                                                                <img src="assets/images/stats/projetblue.png"
+                                                                    alt="Nouveau !" class="imgdim" />
+
+
+                                                            </div>
+
+                                                            <div class="col-md-8 text-left">
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div>
+                                                                            {{item.ligne_finance}}
+                                                                        </div>
+                                                                        <div>Date de mise en oeuvre:
+                                                                            {{item.date_mise_en_oeuvre
+                                                                            |
+                                                                            date:
+                                                                            "dd/MM/yyyy"}}
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div>{{item.commentaire}}</div>
+
+                                                                        <div>Date limitée:{{item.deadline | date:
+                                                                            "dd/MM/yyyy"}}
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngb-tab>
+                                <!-- Porteur de projet -->
+                                <ngb-tab>
+                                    <ng-template ngbTabTitle class="menuTab">
+                                        <h4 class="main"> <img
+                                                src="https://img.icons8.com/ios/16/000000/personal-trainer.png" />
+                                            Porteur
+                                            du projet</h4>
+                                    </ng-template>
+                                    <!-- <ng-template ngbTabTitle><b>Fancy</b> title</ng-template> -->
+                                    <ng-template ngbTabContent>
+                                        <div class="card-body">
+                                            <h2>Qui porte le projet</h2>
+                                            <div class="row text-justify">
+                                                <div class="col-sm-2">
+                                                    <img [src]='projetData.photo_mini' class="actualite"
+                                                        alt="Nouveau !" />
+                                                </div>
+                                                <div class="col-sm-10">
+                                                    <h5>
+                                                        <a href="#">{{profilName}}</a>
+                                                    </h5>
+                                                    <p> <a href="#">{{projetData.adresse}}</a></p>
+                                                    <span *ngif='false'> 0 premier projet lancé sur Wazindo </span>
+                                                    <span>0 projet soutenu</span>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="text-justify">{{projetData.bibliographie}}</h5>
+
+                                            </div>
+                                            <h2 class="rouge" *ngIf='false'>Qui Sommes-nous?</h2>
+                                            <div *ngIf='false'>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <img src="assets\images\portrait.jpg" class="actualite"
+                                                            alt="Nouveau !" />
+                                                        <h3 class="text-justify"> Nimma</h3>
+                                                        <h4 class="text-justify">le projet
+                                                            doit atteindre 100%
+                                                            de son objectif.</h4>
+                                                        <h5 class="text-justify"> wazindo n’est pas une
+                                                            boutique
+                                                            en ligne, le projet
+                                                            doit atteindre 100%
+                                                            de son objectif pour récupérer les fonds et se réaliser afin
+                                                            de
+                                                            livrer ses contreparties.</h5>
+                                                        <h5 class="text-justify">TOUS nos paiements
+                                                            sont
+                                                            sécurisés et nous ne
+                                                            stockons aucune
+                                                            information bancaire. Vous pouvez et être remboursé
+                                                            à tout
+                                                            moment pendant que la campagne est active.</h5>
+                                                        <h5 class="text-justify">Pionnier du crowdfunding (financement
+                                                            participatif), wazindo
+                                                            accompagne les créateurs depuis 2010. Notre mission : donner
+                                                            à
+                                                            chacun le pouvoir d’agir pour un monde plus divers, plus
+                                                            durable,
+                                                            plus ouvert.</h5>
+                                                        <h5 class="text-justify">vous recevez une ou plusieurs
+                                                            contreparties à choisir.</h5>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <img src="assets\images\portrait.jpg" class="actualite"
+                                                            alt="Nouveau !" />
+                                                        <h3 class="text-justify"> Nimma</h3>
+                                                        <h4 class="text-justify">le projet
+                                                            doit atteindre 100%
+                                                            de son objectif.</h4>
+                                                        <h5 class="text-justify"> wazindo n’est pas une
+                                                            boutique
+                                                            en ligne, le projet
+                                                            doit atteindre 100%
+                                                            de son objectif pour récupérer les fonds et se réaliser afin
+                                                            de
+                                                            livrer ses contreparties.</h5>
+                                                        <h5 class="text-justify">TOUS nos paiements
+                                                            sont
+                                                            sécurisés et nous ne
+                                                            stockons aucune
+                                                            information bancaire. Vous pouvez et être remboursé
+                                                            à tout
+                                                            moment pendant que la campagne est active.</h5>
+                                                        <h5 class="text-justify">Pionnier du crowdfunding (financement
+                                                            participatif),
+                                                            accompagne les créateurs depuis 2010. Notre mission : donner
+                                                            à
+                                                            chacun le pouvoir d’agir pour un monde plus divers, plus
+                                                            durable,
+                                                            plus ouvert.</h5>
+                                                        <h5 class="text-justify">vous recevez une ou plusieurs
+                                                            contreparties à choisir.</h5>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <img src="assets\images\portrait.jpg" class="actualite"
+                                                            alt="Nouveau !" />
+                                                        <h3 class="text-justify"> Nimma</h3>
+                                                        <h4 class="text-justify">le projet
+                                                            doit atteindre 100%
+                                                            de son objectif.</h4>
+                                                        <h5 class="text-justify"> n’est pas une boutique
+                                                            en ligne, le projet
+                                                            doit atteindre 100%
+                                                            de son objectif pour récupérer les fonds et se réaliser afin
+                                                            de
+                                                            livrer ses contreparties.</h5>
+                                                        <h5 class="text-justify">TOUS nos paiements sont
+                                                            sécurisés et nous ne
+                                                            stockons aucune
+                                                            information bancaire. Vous pouvez et être remboursé
+                                                            à tout
+                                                            moment pendant que la campagne est active.</h5>
+                                                        <h5 class="text-justify">Pionnier du crowdfunding (financement
+                                                            accompagne les créateurs depuis 2010. Notre mission : donner
+                                                            à
+                                                            chacun le pouvoir d’agir pour un monde plus divers, plus
+                                                            durable,
+                                                            plus ouvert.</h5>
+                                                        <h5 class="text-justify">vous recevez une ou plusieurs
+                                                            contreparties à choisir.</h5>
+                                                    </div>
+                                                </div>
+                                            </div><br>
+                                            <div>
+                                                <p> <strong>Adresse :</strong>{{projetData.adresse}}</p>
+                                                <p><strong>Adresse Email :</strong>{{projetData.adresse_email}}</p>
+                                                <p><strong>Téléphone :</strong>{{projetData.telephone}}</p>
+                                            </div>
+                                            <div class="grise">
+                                                <strong>Suivez le projet ailleurs sur</strong>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <a href='{{projetData.url_facebook}}'><img
+                                                                [src]='facebookLogo' />
+                                                            <strong>La page Facebook</strong> </a>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+
+                                                        <a href='{{projetData.url_linkedin}}'> <img
+                                                                [src]='linkedinLogo' />
+                                                            <strong>La page Linkedin</strong> </a>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <a href='{{projetData.url_twitter}}'> <img
+                                                                [src]='twitterLogo' />
+                                                            <strong>La page Instagram</strong> </a>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+
+                                                        <a href='{{projetData.url_youtube}}'> <img
+                                                                [src]='youtubeLogo' />
+                                                            <strong>La page Youtube</strong> </a>
+
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-6">
+                                
+                                                        <a href='{{projetData.url_twitter}}'> <img
+                                                                [src]='twitterLogo' />
+                                                            L'insta du chat</a>
+                                
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                
+                                                        <a href='{{projetData.url_youtube}}'> <img
+                                                               [src]='youtubeLogo'/>
+                                                            Le Site web</a>
+                                
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngb-tab>
+                                <!-- actualité -->
+                                <ngb-tab>
+                                    <ng-template ngbTabTitle class="menuTab">
+                                        <h4 class="main"><i class=" text-dark fa fa-bullhorn"></i> Actualités
+                                        </h4>
+                                    </ng-template>
+                                    <ng-template ngbTabContent>
+                                        <div class="card-body ">
+                                            <div class="card-deck" *ngFor="let item of listActualite">
+                                                <div class="card ">
+                                                    <div class="card-body ">
+
+                                                        <div class="row">
+                                                            <div class="col-sm-4 text-center mt-2">
+
+                                                                <img [src]='projetData.photo_mini' class="actualite"
+                                                                    alt="Nouveau !" />
+
+                                                            </div>
+                                                            <div class="col-sm-8 text-left">
+                                                                <p>{{item.date_actualite | date: "dd/MM/yyyy hh:mm"}}
+                                                                </p>
+                                                                <h3 class="titletest ">{{item.titre}}</h3>
+                                                                <p>{{item.description}}</p>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </ng-template>
+                                </ngb-tab>
+                                <!-- commentaire -->
+                                <ngb-tab>
+                                    <ng-template ngbTabTitle class="menuTab">
+                                        <h4 class="main"> <i class="text-dark fa fa-comment"></i>
+                                            Commentaires
+                                        </h4>
+                                    </ng-template>
+                                    <ng-template ngbTabContent>
+                                        <div class="card-body">
+
+                                            <div class="row">
+                                                <div class="col-sm-12 text-center">
+                                                    <textarea class="form-control"
+                                                        placeholder="Ecrivez un commentaire..." name="commentaire"
+                                                        [(ngModel)]="contenu" id="exampleFormControlTextarea1"
+                                                        rows="3"></textarea>
+                                                    <div class="text-center mt-2">
+                                                        <button type="submit"
+                                                            class="btn btn-success mdi mdi-content-save"
+                                                            (click)='saveCommentaire()'> Enregistrer </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-2 positiontitle">
+                                                <div class="col-sm-12 text-center">
+                                                    <h2>Commentaires récents</h2>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="card-body ">
+                                                <div class="card-deck" *ngFor="let item of listCommentaire">
+                                                    <div class="card ">
+                                                        <div class="card-body ">
+
+                                                            <div class="row">
+                                                                <div class="col-sm-4 text-center mt-2">
+
+                                                                    <img [src]='projetData.photo_mini' class="actualite"
+                                                                        alt="Nouveau !" />
+
+                                                                </div>
+                                                                <div class="col-sm-8 text-left">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-8 text-left">
+                                                                            <h4 class='amount_project'>
+                                                                                {{item.profil.nom}}&nbsp;{{item.profil.prenom}}
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div class="col-sm-4 text-right">
+                                                                            <h6> {{item.date_commentaire | date:
+                                                                                "dd/MM/yyyy
+                                                                                hh:mm"}}</h6>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <h5> {{item.contenu}}</h5>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+
+                                            <div class="row mt-2">
+
+                                                <div class="col-sm-12 text-center" *ngIf="isLimit">
+                                                    <div class="text-center">
+                                                        <button type="submit"
+                                                            class="btn btn-outline-success mdi mdi-content-save"
+                                                            (click)='getListCommentaireByProject()'> Voir Plus </button>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 text-center" *ngIf="!isLimit">
+                                                    <div class="text-center">
+
+                                                        <button type="submit"
+                                                            class="btn btn-primary mdi mdi-content-save"
+                                                            (click)='getListLastCommenatireByProject()'> Voir Moins
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </ng-template>
+                                </ngb-tab>
+                                <!-- contributeur -->
+                                <ngb-tab>
+                                    <ng-template ngbTabTitle class="menuTab">
+                                        <h4 class="main"> <i class="text-dark fa fa-user"></i>
+                                            Contributeurs
+                                        </h4>
+                                    </ng-template>
+                                    <ng-template ngbTabContent>
+                                        <div class="card-body">
+                                            <div class="card-deck mb-5">
+                                                <div class="card">
+                                                    <div class="card-body">
+
+                                                        <div class="media" *ngFor="let item of listContributeur">
+                                                            <div class="text-center">
+                                                                <img src="assets\images\login_icon.png"
+                                                                    class="actualite" alt="Nouveau !" />
+
+                                                            </div>
+                                                            <div class="media-body text-center fixcontent">
+                                                                <h5 class="titletest text-justify">
+                                                                    <strong>{{item.profil.nom}}&nbsp;{{item.profil.prenom}}</strong>
+                                                                </h5>
+
+                                                            </div>
+                                                            <div class="media-footer text-center fixcontent">
+                                                                <p>{{item.created_at}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngb-tab>
+                                <!-- Contreparties -->
+                            </ngb-tabset>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-sm-4 ">
+
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <p class="amount_project"> {{projetData.montant_a_collecte | formatMoney }} FCFA </p>
+                            <p>
+                                <ngb-progressbar [type]="colorPourcentage" [value]="pourcentageCollect">
+                                </ngb-progressbar>
+                            </p>
+                            <p class=""> {{pourcentageCollect}} % </p>
+                        </div>
+
+                        <div class="card-body">
+                            <a a [routerLink]="['/porteur/creer-compte']"  class="btn btn-couleur mb-1"
+                             >Soutenir&nbsp;<i class="fa fa-money"
+                                    aria-hidden="true"></i></a>
+
+                            <div class="">Payement Sécurisé <i class="fa fa-lock"></i></div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img src="assets/images/Payement/ms-card.png" alt="" width="20%">
+                                    <img src="assets/images/Payement/visa.png" alt="" width="20%">
+                                    <img src="assets/images/Payement/mtn.png" alt="" width="20%">
+                                    <img src="assets/images/Payement/pp.png" alt="" width="20%">
+                                    <img src="assets/images/Payement/moov.png" alt="" width="20%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="card text-center">
+                        <div class="card-header" *ngIf="projetData.profil"> {{projetData.profil.nom + ' ' +
+                            projetData.profil.prenom}}
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text row">
+                                <div class="col-sm-12">
+                                    <img [src]='projetData.photo_mini' class="portrait" alt="Nouveau !" />
+                                </div>
+                                <div class="col-sm-12">
+                                    <h5 class="card-title porteur_login" *ngIf="projetData.profil">
+                                        {{projetData.profil.login}} </h5>
+                                  
+                                    <p *ngIf='lienmessage' class="mt-3 far fa-envelope"> <a (click)='afficherZoneEnvoyer()'
+                                            title="Envoyez un message au porteur">Ecrire au porteur</a>&nbsp;<i class="fa fa-envelope"></i></p>
+                                            <span> <a href="{{projetData.url_facebook}}"><img [src]='facebookLogo' />
+                                            </a></span>
+    
+                                        <span> <a href="{{projetData.url_twitter}}"><img [src]='twitterLogo' />
+                                            </a></span>
+    
+                                        <span> <a href="{{projetData.url_youtube}}"><img [src]='youtubeLogo' />
+                                            </a></span>
+    
+                                        <span> <a href="{{projetData.url_linkedin}}"><img [src]='linkedinLogo' />
+                                            </a></span>
+                                    <div *ngIf='message' class="bord mt-3">
+                                        <div class="mb-3 mt-3 ml-3 mr-2">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                placeholder="Envoyer un message au porteur..." rows="3"></textarea>
+                                            <div class="search-button mt-2">
+                                                <a class="btn btn-outline rounded" (click)='Envoyer()'>Envoyer</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bord container mt-3" *ngFor="let item of listContrepartie">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-3 text-center">
+                                            <img src="assets/images/stats/projetblue.png" alt="Nouveau !"
+                                                class="imgdim" />
+                                        </div>
+                                        <div class="col-md-9">
+                                            <span>Pour {{item.mt_max | formatMoney }} FCFA</span>
+                                            <p>{{item.description}}</p>
+                                            <span>Livraison estimée le :</span>
+                                            <p> {{item.date_liv_est | date:
+                                                "dd/MM/yyyy"}}</p>
+
+                                            <span *ngIf='true'><strong>Quantité limitée</strong></span>
+                                            <p *ngIf='true'>{{
+                                                item.est_illimite == 'oui' ? 'Oui' : 'Non' }}</p>
+                                                <span><strong>Contributeurs</strong></span>
+                                                <p >0</p>
+                                                <span><strong>Collecte</strong></span>
+                                                <p>0</p>
+                                            <div class="text-center btn btn-couleur" >
+                                                <a a [routerLink]="['/porteur/creer-compte']"  class="btn btn-couleur mb-1"
+                                                >Contribuer</a>
+                                              
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                      
+                        
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            Liste des categories
+                          
+                        </div>
+
+                        <div class="card-body">
+                            <h4></h4>
+                           
+
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

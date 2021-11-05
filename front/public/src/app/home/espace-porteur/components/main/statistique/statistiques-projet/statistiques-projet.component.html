@@ -1,0 +1,85 @@
+<!-- partial -->
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3">
+
+
+            <!-- debut -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row justify-content-md-center bg">
+                      
+                        <div class="mt-3 ml-3">
+                            <h2 class="liste"> Statistiques des projets</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
+                    <div class="col-md-8 haut">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Projets</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" [(ngModel)]="projectReference"
+                                    >
+                                    <option value="">selectionner un projet</option>
+                                    <option value="{{item.reference}}" *ngFor="let item of projectsList">{{item.titre}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" (click)="showStats()" class="btn btn-primary"> Afficher
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col grid-margin stretch-card ">
+                            <div class="card">
+
+                                <div class="card-body text-center">
+                                    <h5>{{statistiqueList.montant_projet}}</h5>
+                                    <p>Montant du Projet</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col grid-margin stretch-card">
+                            <div class="card">
+
+                                <div class="card-body text-center">
+                                    <h5>{{statistiqueList.montant_total_contribution}}</h5>
+                                    <p>Montant Total de Contributions</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col grid-margin stretch-card">
+                            <div class="card">
+
+                                <div class="card-body text-center">
+                                    <h5>{{statistiqueList.nombre_de_contribution}}</h5>
+                                    <p>Nombre de Contributions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- fin -->
+        </div>
+
+
+
+    </div>
+
+    <app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-three>

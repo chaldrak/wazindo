@@ -1,0 +1,1537 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3">
+            <div class="card">
+                <div class="card-header ">
+                    <div class="row justify-content-md-center bg">
+                      
+                        <div class="mt-3 ml-5">
+                            <h2 class="liste">Projet <span> {{projet.titre_projet}} </span></h2>
+                        </div>
+                        <div class="mt-3 ml-5">
+                           
+                        </div>
+                        <div class="mt-3 ml-5">
+                            <h4 class="liste"> Partager sur :
+                            </h4>
+                        </div>
+
+                            <share-buttons [theme]="'circles-dark'"
+                                [title]="projet.titre_projet"
+                                [description]="descriptionShared"
+                                [include]="['facebook','whatsapp']"
+                                [url]="urlShared"
+                                [image]="'http://wazindo.com/assets/images/wazindotrans.png'" [showText]="false"
+                                [size]="2" [tags]="'SM ,Link'" [autoSetMeta]="false"></share-buttons>
+
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="text-right mt-3 pad">
+                        <button class="btn btn-light mr-2 mdi mdi-back" (click)="goBack()" title="Retour">
+                            Retour</button>
+
+                        <button type="submit" *ngIf='isFiveEtape && !isPublie' (click)="changeProjectStatus()"
+                            class="btn mr-2 b2 mdi mdi-send" title="Publier ce projet"> Valider </button>
+
+                        <button type="submit" *ngIf='isNotPublie && !isPublie' (click)="changeProjectStatus()"
+                            class="btn mr-2 b2 mdi mdi-send" title="Publier ce projet"> Valider </button>
+                    </div>
+
+                    <div class="row">
+                        <div class="notif_area offset-md-4 col-md-4 text-center"> &nbsp; <span *ngIf="isSaving">
+                                ...Enregistrement en cours... </span></div>
+                    </div>
+
+                    <div class="card-body" *ngIf='isPublie'>
+                        <ngb-tabset [destroyOnHide]="false">
+
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    <h4>Detail du Projet</h4>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Type d'organisation</label>
+                                                <select class="form-control" [(ngModel)]="projet.type_organisation">
+                                                    <option value="">selectionner une organisation</option>
+                                                    <option value="{{item.id}}" *ngFor="let item of organisationList">
+                                                        {{item.nom}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="montant">Montant à Collecter</label>
+                                                <input readonly type="number" class="form-control" id="montant"
+                                                    [(ngModel)]="projet.montant_collecter"
+                                                    placeholder="Montant à Collecter" />
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="titre">Titre du projet</label>
+                                                <input type="text" class="form-control" id="titre"
+                                                    [(ngModel)]="projet.titre_projet" placeholder="Titre du projet" />
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="montant">Durée de la collecte</label>
+                                                <input readonly type="text" class="form-control" id="titre"
+                                                    [(ngModel)]="projet.duree_campagne" placeholder="durée campagne" />
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Pays</label>
+                                                <select class="form-control" [(ngModel)]="projet.pays">
+                                                    <option value="">Sélectionner un Pays</option>
+                                                    <option value="{{item.id}}" *ngFor="let item of paysList">
+                                                        {{item.nom}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Phrase d’accroche</label>
+                                                <textarea class="form-control" [(ngModel)]="projet.resume"
+                                                    maxlength="140" row='2'> </textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Catégorie du Projet</label>
+                                                <select class="form-control" [(ngModel)]="projet.categorie">
+                                                    <option value="" selected>Sélectionnez une catégorie</option>
+                                                    <option value="{{item.id}}" *ngFor="let item of categorieList">
+                                                        {{item.nom}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Présentation détaillée du projet</label>
+                                                <textarea class="form-control" [(ngModel)]="projet.description_projet"
+                                                    maxlength="200" row='5'> </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6" *ngIf="isLocal">
+                                            <div class="form-group">
+
+                                                <label>Département</label>
+
+                                                <select class="form-control">
+                                                    <option value="">selectionner un Département</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6" *ngIf="isLocal">
+                                            <div class="form-group">
+                                                <label>Commune</label>
+
+                                                <select class="form-control">
+                                                    <option value="">Sélectionner une Commune</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header finance">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            Lignes à Financer
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="table-responsive ">
+                                                    <table class="table table-bordered table-striped table-md">
+                                                        <thead class="thead">
+                                                            <tr>
+                                                                <th>Ligne à financer</th>
+                                                                <th>Montant</th>
+                                                                <th>Commentaire</th>
+                                                                <th>Date de mise en oeuvre</th>
+                                                                <th>Deadline</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of listLigneFinance">
+                                                                <td>{{item.ligne_finance}}</td>
+                                                                <td>{{item.montant}}</td>
+                                                                <td>{{item.commentaire}}</td>
+                                                                <td>{{item.date_mise_en_oeuvre | date: "dd/MM/yyyy"}}
+                                                                </td>
+                                                                <td>{{item.deadline | date: "dd/MM/yyyy"}}</td>
+                                                                <td> <button type="button" class="btn btn-danger mr-1"
+                                                                        (click)="deleteLigneFinance(item.id)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #content let-modal>
+
+                                        <div class="modal-header" style="background-color:#3d72f1; color:white;">
+                                            <h4 class="modal-title" id="modal-basic-title">Ligne à Financer</h4>
+                                            <button type="button" class="close" (click)="modal.dismiss('Cross click')"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <div class="form-group">
+                                                            <label for="ligne">Ligne à Financer</label>
+                                                            <input type="texte" id="ligne" name="ligne"
+                                                                [(ngModel)]="finance.ligne_financer"
+                                                                class="form-control" placeholder="Ligne à Financer">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="commentaire">Commentaire</label>
+                                                            <textarea id="commentaire" name="commentaire" rows="3"
+                                                                [(ngModel)]="finance.commentaire" class="form-control"
+                                                                placeholder="Commentaire"></textarea>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="montant">Montant</label>
+                                                            <input type="number" id="montant" name="montant"
+                                                                [(ngModel)]="finance.montant" class="form-control"
+                                                                placeholder="Montant">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date">Date Mise en oeuvre</label>
+                                                            <input class="form-control" id="date" type="date"
+                                                                [(ngModel)]="finance.date_mise_en_oeuvre" name="date"
+                                                                placeholder="date">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="date">Deadline</label>
+                                                            <input class="form-control" id="date" type="date"
+                                                                [(ngModel)]="finance.deadline" name="date"
+                                                                placeholder="date">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                (click)="modal.dismiss('Cross click')"><i class="fa fa-close"></i>
+                                                &nbsp;Annuler</button>
+                                            <button type="button" class="btn btn-couleur" (click)="saveFinance()"> <i
+                                                    class="fa fa-save"></i>&nbsp;Ajouter</button>
+                                        </div>
+                                    </ng-template>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" (click)="updateProject()"><i
+                                                class=" fa fa-save"></i>
+                                            &nbsp;Enregistrer</button>
+                                    </div>
+
+                                </ng-template>
+
+                            </ngb-tab>
+
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    <h4>Document du Projet</h4>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Image</label>
+                                                <div>
+                                                    <input #file type="file" accept='image/*'
+                                                        (change)="previewDocument(file.files)" />
+                                                    <div class="col-md-6 offset-3">
+                                                        <img [src]="imageDocURL" height="300" width="auto"
+                                                            *ngIf="imageDocURL">
+
+                                                    </div>
+                                                    <div class="col-md-6 offset-3">
+                                                        <img src="../../../../assets/warning.png" height="auto"
+                                                            width="auto" *ngIf="!imageDocURL">
+
+                                                    </div>
+                                                    <div class="col-md-6 offset-3">
+                                                        <img [src]="imageDocURL" height="auto" width="auto"
+                                                            *ngIf="!imageDocURL">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+
+                                                <div class="col-sm-12">
+                                                    <div class="card">
+                                                        <div class="card-header finance">
+                                                            <strong>Réseaux Sociaux</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Facebook</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="facebook"
+                                                                            name="facebook" [(ngModel)]="urlFacebook"
+                                                                            placeholder="Lien Facebook: Exemple http://www.facebook.com/mabellepage">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Twitter</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="twitter"
+                                                                            name="twitter" [(ngModel)]="urlTwitter"
+                                                                            placeholder="Lien Twitter: Exemple http://www.twitter.com/mabellepage ">
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Youtube</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="youtube"
+                                                                            name="youtube" [(ngModel)]="urlYoutube"
+                                                                            placeholder="Lien Youtube: Exemple http://www.youtube.com/mabellepage">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Linkedln</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="linkedln"
+                                                                            name="linkedln" [(ngModel)]="urlLinkedln"
+                                                                            placeholder="Lien Linkedln">
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" (click)="saveDocument()"> <i
+                                                class=" fa fa-save"></i>
+                                            &nbsp;Enregistrer</button>
+                                    </div>
+
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    <h4>Biographie</h4>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+
+                                                <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                                    <div class="card">
+                                                        <div class="card-header finance">
+                                                            <strong>Adresses</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Résidence/Siège</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="name"
+                                                                            name="residence"
+                                                                            [(ngModel)]="finance.residence"
+                                                                            placeholder="Résidence">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Adresse Email</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="name" name="email"
+                                                                            [(ngModel)]="finance.email"
+                                                                            placeholder="Adresse Email">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Téléphone</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="name" name="phone"
+                                                                            [(ngModel)]="finance.phone"
+                                                                            placeholder="Téléphone">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                                    <div class="form-group">
+                                                        <label for="ccnumber">Qui suis-je? (Biographie sommaire)</label>
+                                                        <textarea rows="3" type="text" class="form-control"
+                                                            id="biographie_sommaire" name="biographie"
+                                                            [(ngModel)]="finance.biographie"
+                                                            placeholder="Biographie sommaire" row='5'> </textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                                    <div class="card">
+                                                        <div class="card-header finance">
+                                                            <strong>Documents administratifs</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row" *ngIf="!isStartUp">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group row">
+                                                                        <label> Pour les startups ou groupements (copies
+                                                                            de
+                                                                            pièce d'identité des trois (3) membres du
+                                                                            groupe)</label>
+                                                                        <input type="file" class="form-control"
+                                                                            accept=".docx,.pdf"
+                                                                            (change)="envoiFichier($event.target.files)" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" *ngIf="!isCompagny">
+                                                                <div class="col-sm-12">
+                                                                    <div class="form-group row">
+                                                                        <label> Pour les entreprises et associations
+                                                                            (preuves d'immatriculation et copie de pièce
+                                                                            d'identité du représentant légal) </label>
+                                                                        <input type="file" class="form-control"
+                                                                            accept=".docx,.pdf"
+                                                                            (change)="envoiFichier($event.target.files)" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+
+                                                <div class="col-sm-12">
+                                                    <div class="card">
+                                                        <div class="card-header finance">
+                                                            <strong>Réseaux Sociaux</strong>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Facebook</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="facebook"
+                                                                            name="facebook"
+                                                                            [(ngModel)]="finance.facebook"
+                                                                            placeholder="Lien Facebook: Exemple http://www.facebook.com/mabellepage">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Twitter</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="twitter"
+                                                                            name="twitter" [(ngModel)]="finance.twitter"
+                                                                            placeholder="Lien Twitter: Exemple http://www.twitter.com/mabellepage ">
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Youtube</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="youtube"
+                                                                            name="youtube" [(ngModel)]="finance.youtube"
+                                                                            placeholder="Lien Youtube: Exemple http://www.youtube.com/mabellepage">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group">
+                                                                        <label for="name">Linkedln</label>
+                                                                        <input type="text" maxlength="600"
+                                                                            class="form-control" id="linkedln"
+                                                                            name="linkedln"
+                                                                            [(ngModel)]="finance.linkedln"
+                                                                            placeholder="Lien Linkedln">
+                                                                    </div>
+                                                                </div>
+
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" (click)="updateBibliographie()">
+                                            <i class=" fa fa-save"></i>
+                                            &nbsp;Enregistrer</button>
+                                    </div>
+
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    <h4>Contreparties</h4>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header finance">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            Liste des Contreparties
+                                                        </div>
+                                                        <div class="col-sm-6 text-right">
+                                                            <button type="button" class="btn btn-primary mr-1"
+                                                                (click)="Add(contrepartie)">
+                                                                <i class="fa fa-plus"></i>&nbsp;Ajouter
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="card-body">
+                                                    <table class="table table-bordered table-striped table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Description</th>
+                                                                <th class="text-right">Montant</th>
+                                                                <th>Image de la contrepartie</th>
+                                                                <th class="text-center">Quantité limitée</th>
+                                                                <th class="text-center">Date de livraison estimée</th>
+                                                                <th class="text-center">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of listContrepartie">
+                                                                <td>{{item.description}}</td>
+                                                                <td class="text-right">{{item.mt_max}}</td>
+                                                                <td class="">
+                                                                    <img *ngIf="item.image" src="{{item.image}}"
+                                                                        class="portrait" alt="image" />
+                                                                    <em *ngIf="!item.image" class="lake">pas
+                                                                        d'image</em>
+                                                                </td>
+                                                                <td class="text-center">{{ (item.est_illimite === true)?
+                                                                    "OUI": "NON" }}</td>
+                                                                <td class="text-center">{{item.date_liv_est | date:
+                                                                    "dd/MM/yyyy" }}</td>
+
+                                                                <td class="text-center">
+                                                                    <button type="button" class="btn btn-danger mr-1"
+                                                                        (click)="deleteContrepartie(item.id)">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ng-template #contrepartie let-modal>
+
+                                        <div class="modal-header" style="background-color:#3d72f1; color:white;">
+                                            <h4 class="modal-title" id="modal-basic">Liste des Contreparties</h4>
+                                            <button type="button" class="close" (click)="modal.dismiss('Cross click')"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+
+                                                        <div class="form-group">
+                                                            <label for="montant">Montant</label>
+                                                            <input type="number" id="montant"
+                                                                [(ngModel)]="projet.montant" name="montant"
+                                                                class="form-control" placeholder="Montant">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="commentaire">description</label>
+                                                            <textarea id="commentaire" name="commentaire" rows="3"
+                                                                [(ngModel)]="projet.description" class="form-control"
+                                                                placeholder="Commentaire"></textarea>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="date">Date de Livraison</label>
+                                                            <input class="form-control" id="date" type="date"
+                                                                [(ngModel)]="projet.date_livraison" name="date"
+                                                                placeholder="date">
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                [(ngModel)]="projet.quantite" name='limit'
+                                                                value="option1" id="checkbox1">
+                                                            <label class="form-check-label" for="checkbox1">
+                                                                Quantité limitée
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Image de la contrepartie</label>
+                                                            <div>
+                                                                <input #file type="file" accept='image/*'
+                                                                    (change)="previewContrepartie(file.files)" />
+                                                                <div class="col-md-6 offset-3">
+                                                                    <img [src]="imgURL" height="300" width="auto"
+                                                                        *ngIf="imgURL">
+
+                                                                </div>
+
+                                                                <div class="col-md-6 offset-3">
+
+                                                                    <button type="submit" *ngIf="imgURL"
+                                                                        class="btn btn-couleur mdi mdi-upload"
+                                                                        (click)="savePropositionProjet()"><i
+                                                                            class="fa fa-plus"></i>&nbsp; Ajouter
+                                                                        l’image
+                                                                        du projet </button>
+
+                                                                </div>
+                                                                <div class="col-md-6 offset-3">
+                                                                    <span style="color:red;"
+                                                                        *ngIf="imgURL">{{message}}</span>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div> 
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light"
+                                                (click)="modal.dismiss('Cross click')"> <i
+                                                    class="fa fa-close"></i>&nbsp;Annuler</button>
+                                            <button type="button" class="btn btn-couleur" (click)="saveContrepartie()">
+                                                <i class=" fa fa-save"></i>
+                                                &nbsp;Enregistrer</button>
+                                        </div>
+
+
+                                    </ng-template>
+
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab>
+                                <ng-template ngbTabTitle>
+                                    <h4>Actualités</h4>
+                                </ng-template>
+                                <ng-template ngbTabContent>
+                                    <!-- zone ajout de commentaire -->
+                                    <div class="row">
+
+                                        <div class="col-sm-12">
+                                            <div class="row">
+                                                <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                                    <div class="form-group">
+                                                        <label for="number">Titre</label>
+                                                        <input rows="3" type="text" class="form-control" id="number"
+                                                            name="titre" [(ngModel)]="titre"
+                                                            placeholder="Saisir le titre">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="ccnumber">Description</label>
+                                                        <textarea rows="3" type="text" class="form-control"
+                                                            id="ccnumber" name="actualite" [(ngModel)]="description"
+                                                            placeholder="Saisissez votre description"> </textarea>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" (click)="createActualite()"> <i
+                                                class=" fa fa-save"></i>
+                                            &nbsp;Ajouter</button>
+                                    </div>
+
+                                    <!-- zone d'actualite -->
+
+
+
+                                    <div class="card">
+                                        <div class="card-deck" *ngFor="let item of listActualite">
+                                            <div class="card ">
+                                                <div class="card-body ">
+
+                                                    <div class="row">
+                                                        <div class="col-sm-4 text-center mt-2">
+
+                                                            <!-- <img [src]='projetData.photo_mini' class="actualite"
+                                                                alt="Nouveau !" /> -->
+
+                                                        </div>
+                                                        <div class="col-sm-8 text-left">
+                                                            <p>{{item.date_actualite | date: "dd/MM/yyyy hh:mm"}}
+                                                            </p>
+                                                            <h3 class="titletest ">{{item.titre}}</h3>
+                                                            <p>{{item.description}}</p>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+
+                                </ng-template>
+                            </ngb-tab>
+                        </ngb-tabset>
+                    </div>
+
+                    <div class="card-body" *ngIf='isFirstEtape'>
+                        <div class="text-center">
+                            <h2 *ngIf='isNotPublie'>Detail du Projet <span class="colorh">(Etape 1/5)</span></h2>
+                            <h2 *ngIf='!isNotPublie'>Detail du Projet <span class="colorh">(Etape 1/4)</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Type d'organisation</label>
+                                    <select class="form-control" [(ngModel)]="projet.type_organisation">
+                                        <option value="">selectionner une organisation</option>
+                                        <option value="{{item.id}}" *ngFor="let item of organisationList">
+                                            {{item.nom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="montant">Montant à Collecter</label>
+                                    <input type="number" class="form-control" id="montant"
+                                        [(ngModel)]="projet.montant_collecter" placeholder="Montant à Collecter" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="titre">Titre du projet</label>
+                                    <input type="text" class="form-control" id="titre" [(ngModel)]="projet.titre_projet"
+                                        placeholder="Titre du projet" />
+
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="montant">Durée de la collecte</label>
+                                    <select class="form-control" [(ngModel)]="projet.duree_campagne">
+                                        <option value="{{item.id}}" *ngFor="let item of listDay">{{item.id}}
+                                            jours</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Pays</label>
+                                    <select class="form-control" [(ngModel)]="projet.pays">
+                                        <option value="">Sélectionner un Pays</option>
+                                        <option value="{{item.id}}" *ngFor="let item of paysList">
+                                            {{item.nom}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Phrase d’accroche</label>
+                                    <textarea class="form-control" [(ngModel)]="projet.resume" maxlength="140"
+                                        row='2'> </textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Catégorie du Projet</label>
+                                    <select class="form-control" [(ngModel)]="projet.categorie">
+                                        <option value="" selected>Sélectionnez une catégorie</option>
+                                        <option value="{{item.id}}" *ngFor="let item of categorieList">
+                                            {{item.nom}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Présentation détaillée du projet</label>
+                                    <textarea class="form-control" [(ngModel)]="projet.description_projet"
+                                        maxlength="200" row='5'> </textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-6" *ngIf="isLocal">
+                                <div class="form-group">
+
+                                    <label>Département</label>
+
+                                    <select class="form-control">
+                                        <option value="">selectionner un Département</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6" *ngIf="isLocal">
+                                <div class="form-group">
+                                    <label>Commune</label>
+
+                                    <select class="form-control">
+                                        <option value="">Sélectionner une Commune</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header finance">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Lignes à Financer
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <button type="button" class="btn btn-primary mr-1"
+                                                    (click)="open(content)">
+                                                    <i class=" fa fa-plus"></i>
+                                                    &nbsp;Ajouter
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="table-responsive ">
+                                        <table class="table table-bordered table-striped table-md">
+                                            <thead class="thead">
+                                                <tr>
+                                                    <th>Ligne à financer</th>
+                                                    <th>Montant</th>
+                                                    <th>Commentaire</th>
+                                                    <th>Date de mise en oeuvre</th>
+                                                    <th>Deadline</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of listLigneFinance">
+                                                    <td>{{item.ligne_finance}}</td>
+                                                    <td>{{item.montant}}</td>
+                                                    <td>{{item.commentaire}}</td>
+                                                    <td>{{item.date_mise_en_oeuvre | date: "dd/MM/yyyy"}}
+                                                    </td>
+                                                    <td>{{item.deadline | date: "dd/MM/yyyy"}}</td>
+                                                    <td> <button type="button" class="btn btn-danger mr-1"
+                                                            (click)="deleteLigneFinance(item.id)">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #content let-modal>
+
+                            <div class="modal-header" style="background-color:#3d72f1; color:white;">
+                                <h4 class="modal-title" id="modal-basic-title">Ligne à Financer</h4>
+                                <button type="button" class="close" (click)="modal.dismiss('Cross click')"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <div class="form-group">
+                                                <label for="ligne">Ligne à Financer</label>
+                                                <input type="texte" id="ligne" name="ligne"
+                                                    [(ngModel)]="finance.ligne_financer" class="form-control"
+                                                    placeholder="Ligne à Financer">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="commentaire">Commentaire</label>
+                                                <textarea id="commentaire" name="commentaire" rows="3"
+                                                    [(ngModel)]="finance.commentaire" class="form-control"
+                                                    placeholder="Commentaire"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="montant">Montant</label>
+                                                <input type="number" id="montant" name="montant"
+                                                    [(ngModel)]="finance.montant" class="form-control"
+                                                    placeholder="Montant">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date">Date Mise en oeuvre</label>
+                                                <input class="form-control" id="date" type="date"
+                                                    [(ngModel)]="finance.date_mise_en_oeuvre" name="date"
+                                                    placeholder="date">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="date">Deadline</label>
+                                                <input class="form-control" id="date" type="date"
+                                                    [(ngModel)]="finance.deadline" name="date" placeholder="date">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')"><i
+                                        class="fa fa-close"></i>
+                                    &nbsp;Annuler</button>
+                                <button type="button" class="btn btn-couleur" (click)="saveFinance()"> <i
+                                        class="fa fa-save"></i>&nbsp;Ajouter</button>
+                            </div>
+                        </ng-template>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" (click)="updateProject()"><i
+                                    class=" fa fa-save"></i>
+                                &nbsp;Enregistrer</button>
+                        </div>
+                        <div *ngIf='isFirstEtape' class="text-center">
+                            <button type="button" class="btn btn-primary" (click)="goToSecondEtape()">Suivant&nbsp;<i
+                                    class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf='isSecondEtape'>
+                        <div class="text-center">
+                            <h2 *ngIf='isNotPublie'>Document du Projet <span class="colorh">(Etape 2/5)</span></h2>
+                            <h2 *ngIf='!isNotPublie'>Document du Projet <span class="colorh">(Etape 2/4)</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Image</label>
+                                    <div>
+                                        <input #file type="file" accept='image/*'
+                                            (change)="previewDocument(file.files)" />
+                                        <div class="col-md-6 offset-3">
+                                            <img [src]="imageDocURL" height="300" width="auto" *ngIf="imageDocURL">
+
+                                        </div>
+                                        <div class="col-md-6 offset-3">
+                                            <img src="../../../../assets/warning.png" height="auto" width="auto"
+                                                *ngIf="!imageDocURL">
+
+                                        </div>
+                                        <div class="col-md-6 offset-3">
+                                            <img [src]="imageDocURL" height="auto" width="auto" *ngIf="!imageDocURL">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header finance">
+                                                <strong>Réseaux Sociaux</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Facebook</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="facebook" name="facebook" [(ngModel)]="urlFacebook"
+                                                                placeholder="Lien Facebook: Exemple http://www.facebook.com/mabellepage">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Twitter</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="twitter" name="twitter" [(ngModel)]="urlTwitter"
+                                                                placeholder="Lien Twitter: Exemple http://www.twitter.com/mabellepage ">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Youtube</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="youtube" name="youtube" [(ngModel)]="urlYoutube"
+                                                                placeholder="Lien Youtube: Exemple http://www.youtube.com/mabellepage">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Linkedln</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="linkedln" name="linkedln" [(ngModel)]="urlLinkedln"
+                                                                placeholder="Lien Linkedln">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" (click)="saveDocument()"> <i
+                                    class=" fa fa-save"></i>
+                                &nbsp;Enregistrer</button>
+                        </div>
+                        <div *ngIf='isSecondEtape' class="text-center">
+                            <button type="button" class="btn btn-primary" (click)="goToThirdEtape()">Suivant&nbsp;<i
+                                    class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf='isThirdEtape'>
+                        <div class="text-center">
+                            <h2 *ngIf='isNotPublie'>Biographie <span class="colorh">(Etape 3/5)</span></h2>
+                            <h2 *ngIf='!isNotPublie'>Biographie <span class="colorh">(Etape 3/4)</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                        <div class="card">
+                                            <div class="card-header finance">
+                                                <strong>Adresses</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="name">Résidence/Siège</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="name" name="residence"
+                                                                [(ngModel)]="finance.residence" placeholder="Résidence">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="name">Adresse Email</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="name" name="email" [(ngModel)]="finance.email"
+                                                                placeholder="Adresse Email">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label for="name">Téléphone</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="name" name="phone" [(ngModel)]="finance.phone"
+                                                                placeholder="Téléphone">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                        <div class="form-group">
+                                            <label for="ccnumber">Qui suis-je? (Biographie sommaire)</label>
+                                            <textarea rows="3" type="text" class="form-control" id="biographie_sommaire"
+                                                name="biographie" [(ngModel)]="finance.biographie"
+                                                placeholder="Biographie sommaire" row='5'> </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                        <div class="card">
+                                            <div class="card-header finance">
+                                                <strong>Documents administratifs</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row" *ngIf="!isStartUp">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group row">
+                                                            <label> Pour les startups ou groupements (copies
+                                                                de
+                                                                pièce d'identité des trois (3) membres du
+                                                                groupe)</label>
+                                                            <input type="file" class="form-control" accept=".docx,.pdf"
+                                                                (change)="envoiFichier($event.target.files)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row" *ngIf="!isCompagny">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group row">
+                                                            <label> Pour les entreprises et associations
+                                                                (preuves d'immatriculation et copie de pièce
+                                                                d'identité du représentant légal) </label>
+                                                            <input type="file" class="form-control" accept=".docx,.pdf"
+                                                                (change)="envoiFichier($event.target.files)" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+
+                                    <div class="col-sm-12">
+                                        <div class="card">
+                                            <div class="card-header finance">
+                                                <strong>Réseaux Sociaux</strong>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Facebook</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="facebook" name="facebook"
+                                                                [(ngModel)]="finance.facebook"
+                                                                placeholder="Lien Facebook: Exemple http://www.facebook.com/mabellepage">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Twitter</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="twitter" name="twitter"
+                                                                [(ngModel)]="finance.twitter"
+                                                                placeholder="Lien Twitter: Exemple http://www.twitter.com/mabellepage ">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Youtube</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="youtube" name="youtube"
+                                                                [(ngModel)]="finance.youtube"
+                                                                placeholder="Lien Youtube: Exemple http://www.youtube.com/mabellepage">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label for="name">Linkedln</label>
+                                                            <input type="text" maxlength="600" class="form-control"
+                                                                id="linkedln" name="linkedln"
+                                                                [(ngModel)]="finance.linkedln"
+                                                                placeholder="Lien Linkedln">
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" (click)="updateBibliographie()">
+                                <i class=" fa fa-save"></i>
+                                &nbsp;Enregistrer</button>
+                        </div>
+                        <div *ngIf='isThirdEtape' class="text-center">
+                            <button type="button" class="btn btn-primary" (click)="goToFourEtape()">Suivant&nbsp;<i
+                                    class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf='isFourEtape'>
+                        <div class="text-center">
+                            <h2 *ngIf='!isNotPublie'>Contreparties <span class="colorh">(Etape 4/5)</span></h2>
+                            <h2 *ngIf='isNotPublie'>Contreparties <span class="colorh">(Etape 4/4)</span></h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card">
+                                    <div class="card-header finance">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                Liste des Contreparties
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <button type="button" class="btn btn-primary mr-1"
+                                                    (click)="Add(contrepartie)">
+                                                    <i class="fa fa-plus"></i>&nbsp;Ajouter
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table table-bordered table-striped table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Description</th>
+                                                    <th class="text-right">Montant</th>
+                                                    <th>Image de la contrepartie</th>
+                                                    <th class="text-center">Quantité limitée</th>
+                                                    <th class="text-center">Date de livraison estimée</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let item of listContrepartie">
+                                                    <td>{{item.description}}</td>
+                                                    <td class="text-right">{{item.mt_max}}</td>
+                                                    <td class="">
+                                                        <img *ngIf="item.image" src="{{item.image}}" class="portrait"
+                                                            alt="image" />
+                                                        <em *ngIf="!item.image" class="lake">pas
+                                                            d'image</em>
+                                                    </td>
+                                                    <td class="text-center">{{ (item.est_illimite === true)?
+                                                        "OUI": "NON" }}</td>
+                                                    <td class="text-center">{{item.date_liv_est | date:
+                                                        "dd/MM/yyyy" }}</td>
+
+                                                    <td class="text-center">
+                                                        <button type="button" class="btn btn-danger mr-1"
+                                                            (click)="deleteContrepartie(item.id)">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                    </td>
+
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <ng-template #contrepartie let-modal>
+
+                            <div class="modal-header" style="background-color:#3d72f1; color:white;">
+                                <h4 class="modal-title" id="modal-basic">Liste des Contreparties</h4>
+                                <button type="button" class="close" (click)="modal.dismiss('Cross click')"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <div class="form-group">
+                                                <label for="montant">Montant</label>
+                                                <input type="number" id="montant" [(ngModel)]="projet.montant"
+                                                    name="montant" class="form-control" placeholder="Montant">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="commentaire">description</label>
+                                                <textarea id="commentaire" name="commentaire" rows="3"
+                                                    [(ngModel)]="projet.description" class="form-control"
+                                                    placeholder="Commentaire"></textarea>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="date">Date de Livraison</label>
+                                                <input class="form-control" id="date" type="date"
+                                                    [(ngModel)]="projet.date_livraison" name="date" placeholder="date">
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    [(ngModel)]="projet.quantite" name='limit' value="option1"
+                                                    id="checkbox1">
+                                                <label class="form-check-label" for="checkbox1">
+                                                    Quantité limitée
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Image de la contrepartie</label>
+                                                <div>
+                                                    <input #file type="file" accept='image/*'
+                                                        (change)="previewContrepartie(file.files)" />
+                                                    <div class="col-md-6 offset-3">
+                                                        <img [src]="imgURL" height="300" width="auto" *ngIf="imgURL">
+
+                                                    </div>
+
+                                                    <div class="col-md-6 offset-3">
+
+                                                        <button type="submit" *ngIf="imgURL"
+                                                            class="btn btn-couleur mdi mdi-upload"
+                                                            (click)="savePropositionProjet()"><i
+                                                                class="fa fa-plus"></i>&nbsp; Ajouter
+                                                            l’image
+                                                            du projet </button>
+
+                                                    </div>
+                                                    <div class="col-md-6 offset-3">
+                                                        <span style="color:red;" *ngIf="imgURL">{{message}}</span>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light" (click)="modal.dismiss('Cross click')"> <i
+                                        class="fa fa-close"></i>&nbsp;Annuler</button>
+                                <button type="button" class="btn btn-couleur" (click)="saveContrepartie()">
+                                    <i class=" fa fa-save"></i>
+                                    &nbsp;Enregistrer</button>
+                            </div>
+
+                        </ng-template>
+                        <div *ngIf='isFourEtape && !isNotPublie' class="text-center">
+                            <button type="button" class="btn btn-primary" (click)="goToFiveEtape()">Suivant&nbsp;<i
+                                    class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body" *ngIf='isFiveEtape'>
+                        <div class="text-center">
+                            <h2>Actualités <span class="colorh">(Etape 5/5)</span></h2>
+                        </div>
+                        <!-- zone ajout de commentaire -->
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-12" style="padding-bottom: 1rem;">
+                                        <div class="form-group">
+                                            <label for="number">Titre</label>
+                                            <input rows="3" type="text" class="form-control" id="number" name="titre"
+                                                [(ngModel)]="titre" placeholder="Saisir le titre">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="ccnumber">Description</label>
+                                            <textarea rows="3" type="text" class="form-control" id="ccnumber"
+                                                name="actualite" [(ngModel)]="description"
+                                                placeholder="Saisissez votre description"> </textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" (click)="createActualite()"> <i
+                                    class=" fa fa-save"></i>
+                                &nbsp;Ajouter</button>
+                        </div>
+
+                        <!-- zone d'actualite -->
+
+
+
+                        <div class="card">
+                            <div class="card-deck" *ngFor="let item of listActualite">
+                                <div class="card ">
+                                    <div class="card-body ">
+
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center mt-2">
+
+                                                <!-- <img [src]='projetData.photo_mini' class="actualite"
+                                                alt="Nouveau !" /> -->
+
+                                            </div>
+                                            <div class="col-sm-8 text-left">
+                                                <p>{{item.date_actualite | date: "dd/MM/yyyy hh:mm"}}
+                                                </p>
+                                                <h3 class="titletest ">{{item.titre}}</h3>
+                                                <p>{{item.description}}</p>
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-three>

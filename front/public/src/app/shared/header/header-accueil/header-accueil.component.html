@@ -1,0 +1,68 @@
+<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
+ <div class="mobile-fix-option"></div>
+  <div class="top-header" *ngIf="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="header-contact">
+            <ul>
+              <li>Bienvenue sur Wazindo</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="num">Tel: +229 62 52 11 11</span> </li>
+              <li>Email: contact@wazindo.com</li>
+              <li>
+                <a href="#" class="text-light">Comment ça marche</a>
+              </li>
+               
+            </ul>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 menu-connect ">
+          <ul class="header-dropdown d-flex justify-content-end"   id = "menu-demo2"> 
+              
+            <li class="mobile-account p-3" *ngIf='!isconnected' (click)="goToConnexion()">
+            <i class="fa fa-user" aria-hidden="true"></i> Se Connecter 
+              <ul class="text-center">
+                <li ><a [routerLink]="'/porteur/modifier_profil'">Modifier mon profil</a></li>
+                <li ><a  [routerLink]="'/porteur/supprimer_compte'">Supprimer mon profil</a></li>
+                <li ><a (click)="logout()">Deconnexion</a></li>
+              
+              </ul>
+            </li>
+            
+            <li class="mobile-account" *ngIf='isconnected' (click)="goToProfil()">
+              <i class="fa fa-user" aria-hidden="true"></i> {{dataUser.nom}}&nbsp;{{dataUser.prenom}}
+            </li>
+        
+          </ul>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu">
+          <div class="menu-left">
+            <app-left-menu *ngIf='!isconnected'></app-left-menu>
+            <div class="brand-logo">
+              <a routerLink="/accueil" id="headerlogo">
+                <img [src]="themeLogo" class="img-fluid" alt="logo">
+              </a>
+            </div>
+          </div>
+          <div class="menu-right pull-right">
+            <div>
+              <app-menu></app-menu>
+            </div>
+            <div>
+              <app-settings></app-settings>
+              <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

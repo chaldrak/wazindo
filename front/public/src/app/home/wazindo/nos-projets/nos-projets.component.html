@@ -1,0 +1,214 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+<app-breadcrumb [title]="'Projets'" [breadcrumb]="'Projets'"></app-breadcrumb>
+
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="collection-content col">
+                    <div class="page-main-content">
+
+
+                        <div class="top-banner-wrapper text-center">
+
+                            <div class="text-center">
+                                <img src="assets/img/soumettreprojet/image_recherche_projets.jpg" alt="image"
+                                    class="imagerechercher">
+
+                            </div>
+                            <p class="recherche">
+                                Trouvez les projets que vous recherchez en utilisant les critères ci-dessous
+                            </p>
+
+                        </div>
+                        <div class="tools-form">
+                            <div class="row">
+
+                                <!--categorie projet-->
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Catégorie
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="filter.categorie" name="categorie">
+                                        <option value="{{item.id}}" *ngFor="let item of categoriesList">
+                                            {{item.nom}}</option>
+                                    </select>
+                                   
+                                </div>
+
+                                <!--statut projet-->
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Nom du projet
+                                    </label>
+                                    <input type="text" [(ngModel)]="filter.nom_projet" name="annee"
+                                        placeholder="Recherche par nom du projet" class="form-control" />
+
+                                </div>
+
+                                <!--pays de realisation-->
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Pays
+                                    </label>
+                                    <select class="form-control" [(ngModel)]="filter.pays" name="pays">
+                                        <option value="{{item.id}}" *ngFor="let item of listPays">
+                                            {{item.nom}}</option>
+                                    </select>
+                                </div>
+
+                                <!--porteur du projet-->
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Identité du Porteur
+                                    </label>
+                                    <input type="text" [(ngModel)]="filter.nom_porteur" name="annee"
+                                        placeholder="Recherche par nom ou prénom" class="form-control" />
+                                </div>
+
+                                <!--montant du projet-->
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Montant minimum
+                                    </label>
+                                    <input type="text" [(ngModel)]="filter.montant_minimum" name="annee"
+                                        placeholder="Recherche par montant minimum du projet" class="form-control" />
+                                </div>
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Montant maximum
+                                    </label>
+                                    <input type="text" [(ngModel)]="filter.montant_maximum" name="annee"
+                                        placeholder="Recherche par montant maximum du projet" class="form-control" />
+                                </div>
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Date de début
+                                    </label>
+                                    <input type="date" [(ngModel)]="filter.date_de_debut" name="annee"
+                                        placeholder="Recherche par date de clôture" class="form-control" />
+                                </div>
+                                <div class="search-box col-sm-4">
+                                    <label for="exampleFormControlInput1" class="form-label emphasis">
+                                        Date de fin
+                                    </label>
+                                    <input type="date" [(ngModel)]="filter.date_de_fin" name="annee"
+                                        placeholder="Recherche par date de clôture" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="search-button text-center">
+                                <a (click)='getListPublishedProjects()' class="btn btn-solid ">rechercher&nbsp;<i class="fa fa-search" aria-hidden="true"></i></a>
+                            </div>
+                        </div><br />
+
+                        <!-- 
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="filter-main-btn" (click)="toggleMobileSidebar()">
+                                            <span class="filter-btn btn btn-theme">
+                                                <i class="fa fa-filter" aria-hidden="true"></i> Filtrer
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listProjets.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+
+                        <div class="collection-product-wrapper" id="products">
+                         
+                            <div class="product-wrapper-grid" [ngClass]="layoutView">
+                                <div class="row">
+
+                                    <div *ngFor="let item of returnedItems" class="col-sm-12 pt-2">
+                                        <!-- Ajout nouveau -->
+                                        <div class="card-deck" *ngIf="returnedItems==[]">
+                                            <div class="card bordure">
+                                                <div class="media container mt-3 mb-3 ml-3 row">
+                                                    <div class="text-center col-xm-12 col-md-3 col-sm-12">
+                                                        <img src="assets/images/stats/projetblue.png" alt="image">
+
+                                                    </div>
+                                                    <div>
+                                                        <p>Aucun projet trouvé</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-deck" [routerLink]="['/home/detail-projet/', item.reference]">
+                                            <div class="card bordure">
+                                                <div class="media container mt-3 mb-3 ml-3 row">
+                                                    <div class="text-center col-xm-12 col-md-3 col-sm-12">
+                                                        <img src="assets/images/stats/projetblue.png" alt="image">
+
+                                                    </div>
+                                                    <div class="media-body fixcontent  col-xm-12 col-md-9 col-sm-12">
+                                                        <h3 class="text-justify justifier"> {{item.titre}} </h3>
+                                                        <div class="row container">
+
+                                                            <div class="col-xm-12 col-md-8 col-sm-12">
+                                                                <p class="text-justify justifier"> {{item.resume}}</p>
+                                                            </div>
+                                                            <div class="col-xm-12 col-sm-12 col-md-4">
+                                                                <p class="text-justify justifier"><strong>Porteur :</strong> <span
+                                                                        *ngIf="item.profil">
+                                                                        {{item.profil.nom}}&nbsp;{{item.profil.prenom}} </span> </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row container">
+
+                                                            <div class="col-xm-12 col-sm-12 col-md-8">
+                                                                <p class="text-justify justifier">
+                                                                    <strong>Catégorie :</strong> <span
+                                                                        *ngIf="item.categorie">
+                                                                        {{item.categorie.nom}} </span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-xm-12 col-sm-12 col-md-4">
+                                                                <p class="text-justify justifier"><strong>Objectif :</strong> {{item.
+                                                                    montant_a_collecte | formatMoney }} FCFA</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row container">
+
+                                                            <div class="col-xm-12 col-sm-12 col-md-8">
+                                                                <p class="text-justify justifier">
+                                                                    {{item.total_contributions || 0 }}
+                                                                    Contributions</p>
+                                                            </div>
+                                                            <div class="col-xm-12  col-md-4">
+                                                                <div class="search-button justifier">
+                                                                    <a [routerLink]="['/home/detail-projet/', item.reference]"
+                                                                        class="btn btn-solid ">Voir Plus&nbsp;<i class="fa fa-ellipsis-h"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+</section>
+<!-- section End -->
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

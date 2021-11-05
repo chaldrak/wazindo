@@ -1,0 +1,47 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Soutien Solidaire({{listSoutienSolidaire.length}})
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date Visualisation</th>
+                                <th>Publicité Solidaire</th>
+								<th>User Agent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						 <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="10" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listSoutienSolidaire.length === 0">
+                                <td colspan="10" class="text-center alert alert-info"> Aucun soutien solidaire trouvé</td>
+                            </tr>
+						
+                            <tr *ngFor="let item of returnedItems">
+                                <td>{{item.id}}</td>
+                                <td>{{item.date_visualisation}}</td>
+                                <td>{{item.pub_solidaire.titre}}</td>
+                                <td>{{item.user_agent}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage" [nextText]="'Suivant'"
+                    [previousText]="'Prec.'" [totalItems]="listSoutienSolidaire.length" [(ngModel)]="currentPage"
+                    (pageChanged)="pageChanged($event)"></pagination>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

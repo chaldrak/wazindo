@@ -1,0 +1,53 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Publicité Solidaire'" [breadcrumb]="'Publicité Solidaire'"></app-breadcrumb>
+<section class="p-t-0 section-b-space gym-product">
+    <div class="container">
+        <div class="title1  title-gradient section-t-space">
+            <h4>Derniers ajoutés</h4>
+            <h2 class="title-inner1">Les Publicités Solidaires</h2>
+          </div>
+        <div class="row partition-cls">
+       
+        <div class="col-xl-4 col-sm-12 col-lg-4" *ngFor="let item of listPubSolidaire">
+           
+            <div class="product-box ">
+            <div class="img-wrapper">
+                <div class="front">
+                        <img [defaultImage]='item.lien_image_projet'
+                            [lazyLoad]='item.lien_image_projet' class="img-fluid"
+                            alt="hggb">
+                </div>
+              </div>
+              
+              <div class="product-info">
+              
+                    <h3>{{ item.titre }}</h3>
+                <div class="count_projets"> <h4>{{ item.description }}</h4>  </div>
+              
+           
+              </div>
+              <div class="d-flex justify-content-between">
+                <p class="card-text mt-5">
+                  <a (click)='goToVisualisation(item)' class="btn btn-outline-success text-dark"
+                  >
+                    Visualiser
+                  </a>
+    
+                </p>
+                <p class="card-text mt-4" (click)='savePartage(item)'> <share-buttons [theme]="'circles-dark'"
+                                [title]="item.titre"
+                                [description]="item.description"
+                                [include]="['facebook','whatsapp']"
+                                [url]=""
+                                [image]='item.lien_image_projet' [showText]="false"
+                                [size]="2" [tags]="'SM ,Link'" [autoSetMeta]="false"></share-buttons>
+                </p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

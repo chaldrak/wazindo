@@ -1,0 +1,113 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Contribution Paiement'" [breadcrumb]="'Contribution Paiement'"></app-breadcrumb>
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="content">
+                <div class="container">
+                    <div class="entete">
+                        <div class="row pt-2 mb-2">
+                            <div class="col-lg-5 col-sm-12 text-center">
+                                <a [routerLink]="['/home/contribution-projet/',projetData.reference]" class="btn btn-light bordurebouton">Retour</a>
+                            </div>
+                            <div class="col-lg-4 col-sm-12 text-center">
+                                <img [src]="themeLogo" alt="" class="image">
+                            </div>
+                            <div class="col-lg-3 col-sm-12 text-center">
+                                <select name="" id="">
+                                    <option value="Francais">Francais</option>
+                                </select>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <section class="content mt-5">
+                <div class="row paie container" *ngFor="let item of listContrepartie">
+                    <div class="col-lg-8 col-sm-12">
+                        <h4>Contribution libre de {{item.mt_max}} FCFA</h4>
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                        <h5>{{item.description}}</h5>
+                    </div>
+                </div>
+            </section>
+            <section class="content mt-5">
+                <div class="row container">
+
+                    <div class="col-sm-8">
+                        <img [src]='projetData.photo_mini' class="actualite" alt="Nouveau !" />
+
+                    </div>
+                    <div class="col-sm-4">
+                        <span>{{profilName}}&nbsp;{{profilSurname}}</span>
+                        <span>{{profilEmail}}</span>
+                    </div>
+                </div>
+
+            </section>
+            <section class="content mt-5 mb-6">
+                <div class="container">
+                    <h4 class="text-center ">Paiement</h4>
+                        <div class="mt-3 mb-3">
+                            <h5 class="text-center">Wazindo n'est pas une boutique en ligne.</h5>
+                            <p class="text-center"> Vous soutenez un projet pour permettre sa réalisation. Wazindo ne
+                                garantit
+                                pas
+                                que le projet sera mené à bien et n'est pas responsable des engagements de l'équipe du
+                                projet
+                                envers ses contributeurs et contributrices.</p>
+                              
+                            <div class="col-sm-12 col-lg-6 offset-lg-3 text-center pb-2">
+                                <button type="submit" (click)='openKkiapayPayment()' class="btn btn-solid "> Payer&nbsp;&nbsp;<i class="fa fa-money" aria-hidden="true"></i></button>
+                            </div>
+                            <!-- start kkia widget  -->
+                            <!-- <div class='text-center'>
+                                <kkiapay-widget amount='1000' key="fd4c52c0e47b11eb96cbffe4cc632e8e"
+                                    url="http://wazindo.com/assets/images/wazindotrans.png"
+                                    position="center" sandbox="true" theme="#ff0000" data=""
+                                    sandbox="true"
+                                    callback="https://wazindo.com/home/contribution-validation">
+                                </kkiapay-widget>
+                            </div> -->
+                            <!-- end kkia widget  -->
+                    </div>
+                </div>
+            </section>
+            <section class="content mt-5 mb-3">
+                <div class="container">
+
+                    <p class="text-center">Paiement sécurisé</p>
+                    <div class="text-center">
+
+
+                        <div class="imgs mb-3">
+                            <span><img
+                                    src="https://s3-eu-west-1.amazonaws.com/com.kolkt.static/logo/ssl.d5f832ac2d93.svg"
+                                    alt="" class="imag"></span>
+                            <span><img
+                                    src="https://s3-eu-west-1.amazonaws.com/com.kolkt.static/logo/verified-by-visa.bebd5057b01a.svg"
+                                    alt="" class="imag"></span>
+                            <span><img
+                                    src="https://s3-eu-west-1.amazonaws.com/com.kolkt.static/logo/mastercard-securecode.042b0db43029.svg"
+                                    alt="" class="imag"></span>
+                        </div>
+
+                    </div>
+                    <h6>
+                        Ce paiement est géré par notre prestataire KKIAPAY, qui effectue des traitements de données
+                        personnelles dont ils sont seuls responsables, décrits dans la Politique de confidentialité
+                        de KKIAPAY.
+                    </h6>
+                </div>
+
+
+            </section>
+
+        </div>
+    </div>
+</section>
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

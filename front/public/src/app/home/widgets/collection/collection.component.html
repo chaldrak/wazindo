@@ -1,0 +1,25 @@
+<owl-carousel-o [options]="CollectionSliderConfig" class="category-m no-arrow">
+  <ng-container *ngFor="let cats of categories">
+    <ng-template carouselSlide>
+      <div>
+        <div class="category-wrapper" [ngClass]="class">
+          <div class="cats.code">
+            <img [src]="cats.code" class="img-fluid w-auto" alt="">
+            <h4>{{cats.nom}}</h4>
+            <ul class="category-link" >   <!-- [innerHTML]="cats.text"-->
+              <li><a href="#">Solide</a></li>
+              <li><a href="#">Garantie</a></li>
+              <li><a href="#">Bonne tenue de route</a></li>
+
+            </ul>
+            <a [routerLink]="['/annonces/autos']"
+               [queryParams]="{ category: cats.nom}"
+               class="btn btn-outline">
+               voir plus
+            </a>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>

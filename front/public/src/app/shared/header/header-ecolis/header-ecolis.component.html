@@ -1,0 +1,48 @@
+<header class="sticky" [ngClass]="class" [class.fixed]="stick && sticky">
+  <div class="mobile-fix-option"></div>
+  <div class="top-header top-header-dark2" *ngIf="topbar">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="header-contact">
+            <ul>
+              <li>Bienvenue sur notre boutique en ligne</li>
+              <li><i class="fa fa-phone" aria-hidden="true"></i>Tél: (229) 66 66 66 66</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-6 text-right"> 
+          <ul class="header-dropdown">
+            <li class="compare">
+              <a [routerLink]="['/shop/compare']"><i class="fa fa-envelope-o" aria-hidden="true"></i>Email: info@ecolis.com</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="main-menu">
+          <div class="menu-left">
+            
+            <div class="brand-logo">
+              <a routerLink="/home/accueil" id="headerlogo">
+                <img [src]="themeLogo" class="img-fluid" alt="logo">
+              </a>
+            </div>
+          </div>
+          <div class="menu-right pull-right">
+            <div>
+              <app-menu></app-menu>
+            </div>
+            <div>
+              <app-settings></app-settings>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

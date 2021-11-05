@@ -1,0 +1,180 @@
+<app-header-accueil [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-accueil>
+
+<!-- Home slider start-->
+<section class="p-0 gym-slider">
+  <app-slider [sliders]="sliders" [textClass]="'text-right p-right'" [category]="'Pubsolidaire'"
+    [buttonText]="'découvrir'">
+  </app-slider>
+  
+</section>
+<!-- Home slider End -->
+
+
+<!-- Product Box Start-->
+<div class="title1 title-gradient section-t-space">
+  <!-- <h4>consultez les projets</h4> -->
+  <h2 class="title-inner1">consultez les projets par catégorie</h2>
+</div>
+<section class="p-t-0 section-b-space gym-product">
+  <div class="container">
+    <div class="row partition-cls">
+      <div class="col-xl-4 col-sm-6" *ngFor="let item of listProjetPublishedCategories">
+        <div class="product-box " (click)='alert(item)'>
+          <app-category-box-popular [product]="item">
+          </app-category-box-popular>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Product Box End -->
+
+
+
+<!-- blog section start-->
+<section class="blog p-t-0 section-b-space gym-blog">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="title1  title-gradient section-t-space">
+          <!-- <h4>Derniers ajoutés</h4> -->
+          <h2 class="title-inner1">Nos derniers projets Ajoutés</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <app-project [projects]="latestProjects"></app-project>
+      </div>
+    </div><br>
+
+
+    <div class="btn-project text-center text-light">
+      <a [routerLink]="'/home/projets'" class="btn btn-outline-projet rounded">Plus de projets
+        <i class="fa fa-ellipsis-h"></i>
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- blog section End -->
+
+
+
+<!-- stats wazindo alodi Start-->
+<div class="title1 title-gradient section-t-space">
+  <!-- <h3>wazindo alodo</h3> -->
+  <h2 class="title-inner1">wazindo alodo</h2>
+  <p class="p_alodo text-justify">Trouvez ici les meilleurs projets à but commercial ou non commercial, personnel ou professionnel de vos parents, amis. Ils sont issus d’une sélection stricte et sont détectés à fort impact sur leurs communautés</p>
+</div>
+<section class="p-t-0 section-b-space gym-product">
+  <div class="container">
+    <div class="row partition-cls">
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/add-user2.png" alt="logo" width="45%">
+          <h3 class="libelle">Nombre de membres</h3>
+          <p class="lourd" *ngIf="isLoading"><span class="counter-count">0</span></p>
+          <p class="lourd" *ngIf="!isLoading"><span class="counter-count">{{statistiqueList.nombre_membres}}</span></p>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/rocket.png" alt="logo" width="45%">
+          <h3 class="libelle">Nombre de projets</h3>
+          <p class="lourd" *ngIf="!noStat"><span class="counter-count">{{statistiqueList.total_projets_finances}}</span>
+          </p>
+          <p class="lourd" *ngIf="noStat"><span class="counter-count">0</span></p>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/money2.png" alt="logo" width="45%" >
+          <h3 class="libelle">Montant collecté</h3>
+          <p class="lourd" *ngIf="!noStat"><span class="counter-count">{{statistiqueList.montant_total_leve |
+              formatMoney}}
+              FCFA</span></p>
+          <p><span class="lourd" *ngIf="noStat">0 FCFA</span></p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<!-- stats wazindo alodi End -->
+
+
+<!-- stats wazindo finafa Start-->
+<div class="title1 title-gradient section-t-space">
+  <!-- <h3 class="orange_area">wazindo finafa</h3> -->
+  <h2 class="title-inner1">wazindo finafa</h2>
+  <p class="p_finafa text-justify">Trouvez ici les meilleurs projets visant à venir en aide à des citoyens qui sont confrontés à des difficultés particulières et graves en leur apportant des secours ponctuels, conjoncturels et mobilisés pour répondre à des urgences individuelles ou collectives et faire face à des sinistres ou catastrophes.
+    Vous pouvez soutenir directement un projet financièrement mais aussi en regardant la vidéo publicitaire qui se présente au survol de l’image du projet. 
+    Pour chaque vidéo visualisée vous contribuez de <b>250F</b>  qui sont reversés au projet.
+    Lorsqu’en plus vous partagez la vidéo sur les réseaux sociaux (WhatsApp, Facebook, etc.) vous ajoutez <b>500F</b>  au projet. 
+    </p>
+</div>
+<section class="p-t-0 section-b-space gym-product">
+  <div class="container">
+    <div class="row partition-cls">
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/add-user.png" alt="logo" width="45%">
+          <h3 class="libelle">Nombre de membres</h3>
+          <p class="lourd" *ngIf="isLoading"><span class="counter-count">0</span></p>
+          <p class="lourd" *ngIf="!isLoading"><span class="counter-count">{{statistiqueList.nombre_membres}}</span></p>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/rocket2.png" alt="logo" width="45%" >
+          <h3 class="libelle">Nombre de projets</h3>
+          <p class="lourd" *ngIf="!noStat"><span class="counter-count">{{statistiqueList.total_projets_finances}}</span>
+          </p>
+          <p class="lourd" *ngIf="noStat"><span class="counter-count">0</span></p>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-4">
+        <div class="product-box ">
+          <img src="assets/images/stats/money.png" alt="logo" width="45%" >
+          <h3 class="libelle">Montant collecté</h3>
+          <p class="lourd" *ngIf="!noStat"><span class="counter-count">{{statistiqueList.montant_total_leve |
+              formatMoney}}
+              FCFA</span></p>
+          <p><span class="lourd" *ngIf="noStat">0 FCFA</span></p>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+<!-- stats wazindo finafa End -->
+
+
+<!-- Product Box Start-->
+<div class="title1 title-gradient section-t-space">
+  <h4>partenaires</h4>
+  <h2 class="title-inner1">ils nous font confiance</h2>
+</div>
+
+<!--  partners section start-->
+<section class="section-b-space">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <app-logo [logos]="logos"></app-logo>
+      </div>
+    </div>
+  </div>
+</section>
+<!--  logo section End-->
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

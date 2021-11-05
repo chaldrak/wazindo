@@ -1,0 +1,58 @@
+
+
+
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+              
+                <div class="card-body">
+                
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="sponsor_id">Sponsor</label>
+                                <select class="form-control" [(ngModel)]="sponsor_id">
+                                    <option value="" selected>Sélectionner un sponsor</option>
+                                    <option value="{{item.id}}"   *ngFor="let item of listSponsor">{{item.nom}}</option>
+              
+                                  </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Publicité Solidaire</label>
+                                <select class="form-control" [(ngModel)]="pub_id">
+                                    <option value="" selected>Sélectionner une publicité solidaire</option>
+                                    <option value="{{item.id}}" *ngFor="let item of listPubSolidaire">{{item.titre}}</option>
+                                  </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="montant_apport">Montant Apport</label>
+                                <input type="text" name="montant_apport"  class="form-control" id="montant_apport" [(ngModel)]="montant_apport" placeholder="" />
+        
+                            </div>
+                        </div>
+                      
+                    </div>
+                   
+                    <div class="modal-footer">
+                        <button type="button" class="btn b1 mr-1" (click)="saveFiancementSponsor()">
+                            <i class=" fa fa-check"></i>
+                            <span>Enregistrer</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>
+
+
+<ngx-spinner></ngx-spinner>

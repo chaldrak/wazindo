@@ -1,0 +1,17 @@
+.thead {
+    background-color:#40bad5;
+     color: white;
+}
+.lake {
+    color: orange;
+    }
+.haut{margin-top: 20px;}
+
+.lebel{
+	border:none!important;
+	background:none!important;
+}
+
+.portrait{
+    width: 30%;
+}

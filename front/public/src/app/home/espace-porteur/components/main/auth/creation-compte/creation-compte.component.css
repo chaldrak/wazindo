@@ -1,0 +1,128 @@
+.colorLogo {
+    background-color: #ff0000!important;
+    color: #ffffff;
+    border: none;
+}
+
+.colortexte {
+    color: #ff0000;
+}
+
+.tout {
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+.colorlibelle{
+    color: #c0bebe;
+    font-weight : bold;
+}
+
+.passforget {
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.tout {
+    border: 1px solid gray;
+}
+
+.dimlib{
+    font-size: 15px;
+}
+
+.bar {
+    border: 1px solid gray;
+}
+
+.colorback {
+    color: #0533FB;
+}
+
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    z-index: 99;
+    height: 100%;
+    opacity: .8;
+}
+
+.spinner img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    /* -1 * image width / 2 */
+    margin-top: -32px;
+    /* -1 * image height / 2 */
+    display: block;
+}
+
+section {
+    padding-top: 100px;
+}
+
+.c1 {
+    background-image: url('../../../../../../../assets/img/inscript.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #fff;
+
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .imgdim {
+        width: 100%;
+        text-align: center;
+    }
+  }
+
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .imgdim {
+        width: 40%;
+        text-align: center;
+    }
+  }
+
+.formtext {
+    font-weight: bold;
+    font-size: 13px;
+    text-align: center;
+}
+
+.colortext {
+    color: red;
+}
+
+p {
+    color: black;
+}
+
+/* .imgdim {
+    width: 20%;
+} */
+
+.form-control {
+    height: auto;
+
+}
+
+.form-group {
+    margin-bottom: 0.2rem;
+}
+
+.size-text{
+    font-size: 1em;
+}
+.country{
+    font-size: 1em;
+
+}
+

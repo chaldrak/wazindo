@@ -1,0 +1,50 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Statistiques({{listProjetUser.length}})
+                    
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Projets</th>
+                                <th>Montant Total</th>
+                                <th>Nombre de Contribution</th>
+                                <th>Total Contribution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            	
+						 <!-- Ligne alternative pr recherche en cours -->
+                         <tr *ngIf="isLoading">
+                            <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                        </tr>
+
+                        <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                        <tr *ngIf="!isLoading && listProjetUser.length === 0">
+                            <td colspan="5" class="text-center alert alert-info"> Aucune statistique trouvée</td>
+                        </tr>
+
+
+
+                            <tr *ngFor="let item of returnedItems">
+                                <td>{{item.titre}}</td>
+                                <td>{{item.montant_projet}}</td>
+                                <td>{{item.nombre_de_contribution}}</td>
+                                <td>{{item.montant_total_contribution}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listProjetUser.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

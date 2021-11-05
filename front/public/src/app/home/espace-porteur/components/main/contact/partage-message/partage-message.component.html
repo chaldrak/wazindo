@@ -1,0 +1,114 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container mt-3">
+
+            <!-- DEBUT MESSAGE A WASINDO -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row justify-content-md-center bg">
+                    
+                        <div class="mt-3 ml-3">
+                            <h2 class="liste"> Partage de Message</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label>Mode de partage</label>
+                        <select class="form-control" [(ngModel)]="projet.mode" (ngModelChange)="selectedValue()">
+                            <option value="facebook">Facebook</option>
+                            <option value="whatsapp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Message</label>
+                        <textarea class="form-control" name="contenu" [(ngModel)]="projet.message" name="message"
+                            rows="4"></textarea>
+                    </div>
+                    <div class="row" *ngIf='iswhatsapp'>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label for="name">Contact</label>
+                                <input type="text" maxlength="600" class="form-control" id="facebook"
+                                    [(ngModel)]="projet.contact" name="contact" placeholder="contact">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary mr-1 mt-4" (click)="addContact()">
+                                <i class=" fa fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form class="forms-sample text-center">
+                        <table class="table table-striped mt-2 mb-5 table-bordered table-md">
+                            <thead>
+                                <tr>
+                                    <th>Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let item of contactList">
+                                    <td>{{item}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+
+                    </form>
+                    <div class="form-group" *ngIf='isfacebook'>
+                        <label for="name">Adresse Facebook</label>
+                        <input type="text" maxlength="600" class="form-control" id="facebook" [(ngModel)]="projet.email"
+                            name="email" placeholder="Adresse facebook">
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-light mr-2 mdi mdi-close-circle-outline"> Annuler</button>
+                        <button type="submit" class="btn btn-primary mdi mdi-send" (click)="sendPartage()"> Envoyer
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1">Message</label>
+                    <textarea class="form-control" name="contenu" [(ngModel)]="projet.message" name="message"
+                        rows="4"></textarea>
+                </div>
+                <div class="form-group" *ngIf='iswhatsapp'>
+                    <label for="name">Contact</label>
+                    <input type="text" maxlength="15" class="form-control" id="facebook" [(ngModel)]="projet.contact"
+                        name="contact" placeholder="contact">
+                </div>
+                <div class="form-group" *ngIf='isfacebook'>
+                    <label for="name">Adresse Facebook</label>
+                    <input type="text" maxlength="600" class="form-control" id="facebook" [(ngModel)]="projet.email"
+                        name="email" placeholder="Adresse facebook">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-light mr-2 mdi mdi-close-circle-outline"> Annuler</button>
+                    <button type="submit" class="btn btn-primary mdi mdi-send" (click)="sendPartage()"> Envoyer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- FIN MESSAGE WASINDO -->
+
+
+
+    </div>
+
+    <!-- partial -->
+</div>
+<!-- main-panel ends -->
+<!-- page-body-wrapper ends -->
+
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-three>

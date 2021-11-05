@@ -1,0 +1,60 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Catégories ({{ listProjetUser.length }})
+                    <button type="button" class="pull-right btn btn-primary" (click)="CategorieCreation()"><i
+                        class=" fa fa-plus"></i> <span> Ajouter </span></button>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nom</th>
+                                <th>Référence</th>
+                                <th>Icône</th>
+								<th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+						
+						 <!-- Ligne alternative pr recherche en cours -->
+                            <tr *ngIf="isLoading">
+                                <td colspan="5" class="text-center alert alert-warning">Chargement des données en cours...</td>
+                            </tr>
+
+                            <!-- Ligne alternative pr recherche finie et aucun resultat trouve -->
+                            <tr *ngIf="!isLoading && listProjetUser.length === 0">
+                                <td colspan="5" class="text-center alert alert-info"> Aucune catégorie trouvée</td>
+                            </tr>
+						
+                            <tr *ngFor="let item of returnedItems">
+                                <td>{{item.id}}</td>
+                                <td>{{item.nom}}</td>
+                                <td>{{item.reference}}</td>
+                                <td>
+                                    <img src="{{item.icone}}" alt="image" style="max-width: 10%;" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary mr-1" (click)="goToedit(item)">
+                                        <i class="fa fa-edit"></i>
+                                      </button>
+                                    <button type="button" class="btn btn-danger mr-1" (click)="categorieDelete(item)">
+                                        <i class="fa fa-trash"></i>
+                                      </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination class="justify-content-center" [itemsPerPage]="itemsPerPage"   [nextText]="'Suivant'" [previousText]="'Prec.'" [totalItems]="listProjetUser.length" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+    </div>
+    <!--/.row-->
+</div>

@@ -1,0 +1,43 @@
+<div class="img-wrapper">
+    <!-- <div class="ribbon" *ngIf="product.new"><span>new</span></div> -->
+    <div class="front">
+        <a [routerLink]="['/annonces/autos/detail/', product.code]">
+            <img *ngIf="product.image_produits!== undefined && product.image_produits[0]!== undefined"    [defaultImage]="'assets/images/product/placeholder.jpg'"
+                  [lazyLoad]="product.image_produits[0].url" class="img-fluid"
+                  alt="{{ product.titre }}">
+        </a>
+    </div>
+    <div class="cart-info cart-wrap">
+        <a href="javascript:void(0)" (click)="likeThisCar(product)" title="J'aime">
+        	<i class="fa fa-heart" aria-hidden="true"></i>
+        </a>
+        <!-- <button title="Add to cart" (click)="CartModal.openModal(product)" *ngIf="cartModal">
+        	<i class="ti-shopping-cart"></i> Add to cart
+        </button> -->
+        <button title="Plus de détails sur cette voiture" (click)="showDetails(product)" >
+        	<i class="ti-shopping-cart"></i> Voir cette voiture
+        </button>
+        <!-- <a href="javascript:void(0)" (click)="addToCompare(product)" title="Compare">
+        	<i class="fa fa-refresh" aria-hidden="true"></i>
+        </a> -->
+        <a href="javascript:void(0)" class="mobile-quick-view" (click)="QuickView.openModal()" title="Quick View">
+        	<i class="ti-search" aria-hidden="true"></i>
+        </a>
+    </div>
+    <!-- <div class="quick-view-part">
+        <a href="javascript:void(0)" (click)="QuickView.openModal()" title="Quick View">
+        	<i class="ti-search" aria-hidden="true"></i>
+        </a>
+    </div> -->
+</div>
+
+<div class="product-info">
+    <bar-rating [rate]="5" [readOnly]="true"></bar-rating>
+    <a [routerLink]="['/annonces/autos/detail/', product.code]">
+    	<h6>{{ product?.titre | titlecase }}</h6>
+    </a>
+    <h4>{{ product?.prix | currency:currency?.currency:'symbol' }}</h4>
+</div>
+
+<app-quick-view #quickView [product]="product" [currency]="currency"></app-quick-view>
+<app-cart-modal #cartModal [product]="product" [currency]="currency" *ngIf="cartModal"></app-cart-modal>

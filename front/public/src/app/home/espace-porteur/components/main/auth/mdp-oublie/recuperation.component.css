@@ -1,0 +1,111 @@
+/*Barre de navigation*/
+
+.nav1 {
+    background-color: aliceblue;
+}
+
+.colorback {
+    color: #0533FB;
+}
+
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fefefe;
+    z-index: 99;
+    height: 100%;
+    opacity: .8;
+}
+
+.spinner img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -32px;
+    /* -1 * image width / 2 */
+    margin-top: -32px;
+    /* -1 * image height / 2 */
+    display: block;
+}
+
+
+/*Footer*/
+
+.tout {
+    border: 1px solid gray;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.ios {
+    background-color: rgb(207, 31, 31);
+}
+
+.caf {
+    background-color: #263961;
+    border: 2px solid black;
+    height: 50px;
+    text-align: center;
+}
+
+.fb {
+    font-size: 25px;
+    border-left: 2px solid black;
+    text-align: center;
+}
+
+.tw {
+    border-radius: 2px;
+}
+
+.tw1 {
+    font-size: 30px;
+}
+
+.trait1 {
+    border: 1px solid black;
+}
+
+.passforget {
+    font-size: 13px;
+}
+
+.colorLogo {
+    background-color: #0533fb;
+    color: #ffffff;
+    border: none;
+}
+
+.colortexte {
+    color: #ff0000;
+}
+
+.bg_twitter {
+    background-color: #1da1f2;
+}
+
+.bg_google {
+    background-color: #c8483b;
+}
+
+.bg_linkedin-in {
+    background-color: #006599;
+}
+
+section {
+    padding-top: 100px;
+}
+
+.img {
+    padding-top: 10px;
+}
+
+.bar {
+    border: 1px solid gray;
+}

@@ -1,0 +1,37 @@
+.contentbarre{
+    background-color:#E21603;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+.recherche{
+    padding-bottom: 15px!important;
+}
+.lab{
+    font-size:16px!important;
+    color:#222222;
+    letter-spacing: 0.05em;
+    line-height: 24px;
+    font-weight: 400;
+}
+.bordure{
+    border: 1px solid #777777;
+    background-color: #f8f8f8;
+}
+// .bordure:hover {
+//     color:#3d72f1;
+//     text-decoration:none;
+//     background-color:#3d72f1;
+//     }
+.imagerechercher{
+    width: 30%;
+}
+@media screen and (min-width: 480px) {
+    .justifier {
+     text-align: center!important;
+    }
+  }
+.search-button{ margin-top: 10px; }
+.emphasis{font-weight: bold; } .search-box{ margin-top: 20px; }
+.image{
+    width: 50%;
+}

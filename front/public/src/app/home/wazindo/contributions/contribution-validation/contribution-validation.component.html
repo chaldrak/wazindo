@@ -1,0 +1,57 @@
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Validation de COntribution'" [breadcrumb]="'Validation de Contribution'"></app-breadcrumb>
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="bordurecontent mb-3">
+            <div class="container">
+                <div class="entete">
+                    <div class="row pt-2 mb-2">
+
+                        <div class="col-lg-12 col-sm-12 text-center">
+                            <img [src]="themeLogo" alt="" class="image">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bordurecontent">
+            <div class="container">
+                <div class="shutter">
+                    <div class="col-sm-12 text-center">
+                        <img [src]="themeSuccess" class="actualite" alt="Nouveau !" />
+
+                    </div>
+
+                </div>
+
+                <div class="bouton">
+
+                    <div class="footer_payement">
+                        <p class="text-center mt-3"> Merci d'avoir soutenu le projet <span>{{projetData.titre}}</span>.
+                        </p>
+                        <p class="text-center mt-3"> Votre reference de transaction est <span>{{transactionId}}</span>.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 offset-lg-4 text-center pb-2">
+                    <button type="submit" (click)='goToProjet()' class="btn btn-solid "> Retour au projet&nbsp;&nbsp;<i
+                            class="fa fa-home" aria-hidden="true"></i></button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<app-footer-two [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-two>

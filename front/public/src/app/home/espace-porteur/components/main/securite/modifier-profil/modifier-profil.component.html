@@ -1,0 +1,145 @@
+<!-- partial -->
+<app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="container">
+
+            <!-- DEBUT EDITION PROFIL -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row justify-content-md-center bg">
+                      
+                        <div class="mt-3 ml-3">
+                            <h2 class="liste">Editer mon profil</h2>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <hr>
+                        <form class="form-sample mt-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Nom</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" [(ngModel)]="profil.nom"
+                                                name="surname" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Prénom</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" [(ngModel)]="profil.prenom"
+                                                name="presurname" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Biographie</label>
+                                        <div class="col-sm-9">
+
+                                                <textarea rows="3" type="text" class="form-control" id="biographie_sommaire"
+                                                name="biographie" [(ngModel)]="profil.biographie"
+                                                placeholder="Biographie" row='5'> </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Email</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" [(ngModel)]="profil.email"
+                                                name="adresse" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+    
+                                        <div class="col-sm-12">
+                                            <div class="card">
+                                                <div class="card-header finance">
+                                                    <strong>Réseaux Sociaux</strong>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="name">Facebook</label>
+                                                                <input type="text" maxlength="600" class="form-control"
+                                                                    id="facebook" name="facebook"
+                                                                    [(ngModel)]="profil.facebook"
+                                                                    placeholder="Lien Facebook: Exemple http://www.facebook.com/mabellepage">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="name">Twitter</label>
+                                                                <input type="text" maxlength="600" class="form-control"
+                                                                    id="twitter" name="twitter"
+                                                                    [(ngModel)]="profil.twitter"
+                                                                    placeholder="Lien Twitter: Exemple http://www.twitter.com/mabellepage ">
+                                                            </div>
+                                                        </div>
+    
+    
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="name">Youtube</label>
+                                                                <input type="text"  maxlength="600" class="form-control"
+                                                                    id="youtube" name="youtube"
+                                                                    [(ngModel)]="profil.youtube"
+                                                                    placeholder="Lien Youtube: Exemple http://www.youtube.com/mabellepage">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label for="name">Linkedln</label>
+                                                                <input type="text" maxlength="600" class="form-control"
+                                                                    id="linkedln" name="linkedln"
+                                                                    [(ngModel)]="profil.linkedln"
+                                                                    placeholder="Lien Linkedln">
+                                                            </div>
+                                                        </div>
+    
+    
+                                                    </div>
+    
+    
+                                                </div>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                </div>
+    
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-light mr-2 mdi mdi-close-circle-outline"> Annuler</button>
+                                <button type="submit" class="btn btn-primary mdi mdi-content-save"
+                                    (click)="updateProfil()"> Enregistrer </button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo"></app-footer-three>
+
+<!-- FIN EDITION PROFIL -->

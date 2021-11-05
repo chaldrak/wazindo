@@ -1,0 +1,92 @@
+<!-- <app-header-one [class]="'header-gym'" [themeLogo]="themeLogo"></app-header-one>
+
+<app-breadcrumb [title]="'Connexion'" [breadcrumb]="'Connexion'"></app-breadcrumb> -->
+<section>
+    <div class="app-body">
+        <main class="main d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 mx-auto">
+                        <div class="card-group">
+
+                            <div class="card d-md-down-none c1" style="width:55%">
+
+                                <!-- <img [src]="Logo" class="imgpos" alt="logo"> -->
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="col-sm-12 text text-left">
+                                        <img [src]="themeLogo" [routerLink]="['/home/accueil']" class="img-fluid imgdim"
+                                            alt="logo" >
+                                    </div>
+                                </div>
+
+                                <div class="card-body">
+                                    <form>
+                                        <h2 class="formtext">Bienvenu sur la plateforme <span
+                                                class="colortext">WAZINDO</span></h2>
+                                        <p class="text-center colorlibelle">Veuillez vous connecter</p>
+                                        <div class="form-group">
+                                            <label for="">Email</label>
+                                            <input type="email" class="form-control size-text" name="adresse_email" maxlength="30"
+                                                [(ngModel)]="profil.email" placeholder="Votre mail ici ">
+                                        </div>
+                                            <label for="">Mot de passe</label>
+                                         
+
+
+                                        <div class="input-group mb-2">
+                                       <input type="{{getInputType()}}" [(ngModel)]="profil.password" maxlength="30" class="form-control size-text" placeholder="Mot de passe *" name="motdepasse">
+                                            <div class="input-group-append"  (click)="tooglePasswordView()">
+                                                     
+                                                <div class="input-group-text">
+                                                    <span class="{{getIconValue()}}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row justify-content-between">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <input type="checkbox">&nbsp;<span class="passforget">Se rappeler de
+                                                    moi</span>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
+                                                <a [routerLink]="['/porteur/recuperation-compte']"
+                                                    class="text-success "><u class="passforget colortexte ">Mot de passe
+                                                        oublié?</u></a>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn-lg colorLogo"
+                                                (click)="authenticateUser()"><i class="fa fa-lock dimlib"></i> &nbsp;
+                                                <span class='dimlib'>Se connecter</span> </button>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                            <p><small class="passforget">Pas encore
+                                                    inscrit.</small>&nbsp;<a [routerLink]="['/porteur/creer-compte']"
+                                                    class="passforget"><u class="colortexte"> Créer un compte
+                                                    </u></a></p>
+                                        </div>
+                                        <div class="text-center pt-2">
+                                            <p class="colorlibelle">2021 Wazindo</p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</section>
+
+
+
+
+
+<!-- <app-footer-three [class]="'bg-img-gym bg-size'" [themeLogo]="themeLogo" ></app-footer-three> -->

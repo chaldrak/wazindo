@@ -1,0 +1,103 @@
+<owl-carousel-o [options]="BlogSliderConfig" class="no-arrow">
+  <ng-container *ngFor="let project of projects">
+    <ng-template carouselSlide>
+      <div class=" p-wazindo text-center" >
+      <div class="col-md-12">
+        <a [routerLink]="['/home/detail-projet/', project.reference]">
+         
+          <div class="classic-effect text-center">
+            <!-- <img [src]="project.image" class="img-fluid" alt="Projet"> -->
+
+            <img
+            
+              [defaultImage]="project.photo_mini ? project.photo_mini : 'assets/img/projets/image_project-default.png'"
+              [lazyLoad]="project.photo_mini ? project.photo_mini : 'assets/img/projets/image_project-default.png' "
+              class="img-fluid image " alt="{{ project.nom }}">
+
+            
+          </div>
+
+          <div class="text label_categorie">
+            EDUCATION
+          </div>
+
+        </a>
+        
+
+        <div class="box">
+          <div class="row">
+            <div class="col-lg-6  text-left text-primary">
+              <p>Benin</p>
+
+
+            </div>
+
+            <div class="col-lg-6  text-right text-primary">
+              <p>Admin</p>
+            </div>
+          </div>
+         
+        </div>
+
+
+
+        <div class=" bord-body">
+          <br>
+
+          <img src="" alt="" width="30%" class=" imge text-center">
+         
+
+         
+          <strong><a  class="text-dark  size" [routerLink]="['/home/detail-projet/', project.reference]"><strong>{{project.titre | limitTo:30}}</strong></a><br><br></strong>
+          <p class="size-desc">Notre projet a pour but d'aider toutes les personnes qui ont les difficultés à lire et écrire de mieux s'améliorer et s'adapter au monde extérieur en vu de bien faire leurs activitées </p>
+          <div class="row">
+            <div class="col-lg-4 padd1">
+              <small class="pull-left ">0
+              </small><br>
+              <small class="pull-left">Contributeur
+              </small>
+            </div>
+            <div class="col-lg-4">
+
+              <!-- <small>{{project.reference}} </small> -->
+              <small>{{project.duree_campagne}} Jours </small><br>
+              <small>restants</small>
+
+            </div>
+
+            <div class="col-lg-4 padd2">
+              <small class="pull-right">{{project.montant_a_collecte | formatMoney }} FCFA
+              </small>
+            </div>
+           
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" style="width: 68%" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+         <p>68%</p>
+        </div>
+        </div>
+          <div class="d-flex justify-content-between bout">
+            <p class="card-text mt-5 p-2">
+              <a class="btn btn-danger text-white" role="button"
+                [routerLink]="['/home/detail-projet/', project.reference]">
+                Détails
+              </a>
+
+            </p>
+            <p class="card-text mt-5">
+              <a [routerLink]="['/home/contribution-projet',project.reference]" name="" id=""
+                class="btn btn-danger text-white" role="button"> Soutenir</a>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>

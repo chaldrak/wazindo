@@ -1,0 +1,35 @@
+.finance {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color:#40bad5!important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+	color:white!important;
+}
+.pad{margin-right:40px!important;}
+.b1{background-color:#40bad5; color:white;}
+.b2{background-color:#fcbf1e; color:white;}
+
+.notif_area{ font-style: italic; font-size: 12px; color: grey;}
+
+.colorh{
+    color:#fcbf1e;
+}
+
+.lake {
+    color: orange;
+    }
+.haut{margin-top: 20px;}
+
+.lebel{
+	border:none!important;
+	background:none!important;
+}
+.btn-couleur{
+    background-color: #3d72f1;
+    color: white;
+}
+
+
+.portrait{
+    width: 30%;
+}

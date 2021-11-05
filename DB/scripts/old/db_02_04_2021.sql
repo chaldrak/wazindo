@@ -1,0 +1,1 @@
+ALTER TABLE wazindo.projet CHANGE departement_id commune_id int(11) DEFAULT NULL NULL;

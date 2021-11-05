@@ -1,0 +1,72 @@
+.num{
+
+    font-size: 1.2em;
+}
+
+// .onhover-show-div, .onhover-dropdown { z-index: -1; }
+
+#menu-demo2, #menu-demo2 ul{
+
+list-style:none;
+text-align:center;
+}
+#menu-demo2 li{
+display:inline-block;
+position:relative;
+border-radius:8px 8px 0 0;
+
+}
+#menu-demo2 ul li{
+display:inherit;
+border-radius:0;
+
+}
+#menu-demo2 ul li:hover{
+border-radius:0;
+}
+#menu-demo2 ul li:last-child{
+border-radius:0 0 8px 8px;
+}
+#menu-demo2 ul{
+position:absolute;
+
+max-height:0;
+left: 0;
+right: 0;
+overflow:hidden;
+-moz-transition: .8s all .3s;
+-webkit-transition: .8s all .3s;
+transition: .8s all .3s;
+
+}
+#menu-demo2 li:hover ul{
+max-height:35em;
+}
+#menu-demo2 ul li{
+  color: white;
+}
+/* background des liens menus */
+
+
+#menu-demo2 li:nth-child(2){
+background-color: black;
+
+}
+#menu-demo2 li:nth-child(3){
+background-color:  black;
+
+}
+#menu-demo2 li:last-child{
+background-color:  black;
+
+}
+.menu-connect
+{
+  // width: 103%;
+  // padding-left: 18.5em;
+  text-align:center;
+}
+
+/* background des liens menus et sous menus au survol */
+
+/* les a href */
